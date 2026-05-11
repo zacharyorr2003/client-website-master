@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave a Review</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink:    #080D18;
+      --paper:  #FAFAF7;
+      --void:   #0B1D3A;
+      --gold:   #60BFFF;
+      --amber:  #2E9AF0;
+      --ember:  #1B7FE0;
+      --signal: #1252CC;
+      --logo-a: #0A2F82;
+      --logo-b: #3DA5FF;
+      --fire:   linear-gradient(135deg, #0A2F82, #1252CC, #1B7FE0, #60BFFF);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100%;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'Inter', sans-serif;
+      font-size: .9rem;
+      line-height: 1.7;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem 1.25rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Ambient background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(18,82,204,.13) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 30% at 80% 80%, rgba(96,191,255,.05) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Grain texture */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .6;
+    }
+
+    /* Card */
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 480px;
+      background: rgba(250,250,247,.025);
+      border: 1px solid rgba(250,250,247,.08);
+      border-radius: 12px;
+      overflow: hidden;
+      animation: cardIn .5s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(24px) scale(.98); }
+      to   { opacity: 1; transform: translateY(0)   scale(1);    }
+    }
+
+    .card-top-bar {
+      height: 3px;
+      background: var(--fire);
+    }
+
+    .card-inner {
+      padding: 2.5rem 2.25rem 2.75rem;
+    }
+
+    /* Logo */
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo-wrap img {
+      height: 40px;
+      width: auto;
+    }
+
+    /* Sections */
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* Step 1 — Star rating */
+    .step-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .5rem;
+    }
+
+    .step-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 6vw, 2.75rem);
+      line-height: .95;
+      letter-spacing: .02em;
+      margin-bottom: .65rem;
+    }
+
+    .step-sub {
+      font-size: .82rem;
+      color: rgba(250,250,247,.45);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    /* Stars */
+    .stars {
+      display: flex;
+      gap: .5rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .star-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .25rem;
+      border-radius: 4px;
+      line-height: 1;
+      transition: transform .2s cubic-bezier(.34,1.56,.64,1);
+      outline: none;
+    }
+
+    .star-btn:focus-visible {
+      outline: 2px solid var(--signal);
+      outline-offset: 2px;
+    }
+
+    .star-btn:hover  { transform: scale(1.18); }
+    .star-btn:active { transform: scale(.95); }
+
+    .star-btn svg {
+      width: 52px;
+      height: 52px;
+      display: block;
+      transition: filter .2s ease;
+    }
+
+    .star-btn svg .star-path {
+      fill: rgba(250,250,247,.1);
+      stroke: rgba(250,250,247,.2);
+      stroke-width: 1.5;
+      transition: fill .18s ease, stroke .18s ease;
+    }
+
+    /* Hover state — stars up to hovered become gold */
+    .stars.hovering .star-btn.in-range svg .star-path {
+      fill: #FFB800;
+      stroke: #FFB800;
+      filter: none;
+    }
+
+    /* Selected state */
+    .star-btn.selected svg .star-path {
+      fill: #FFB800;
+      stroke: #FFB800;
+    }
+
+    .star-btn.selected svg {
+      filter: drop-shadow(0 0 8px rgba(255,184,0,.5));
+    }
+
+    /* Star hint text */
+    .star-hint {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,.3);
+      text-align: center;
+      height: 1.2em;
+      transition: color .15s ease, opacity .15s ease;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Form fields */
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .field-wrap { display: flex; flex-direction: column; gap: .35rem; }
+
+    .field-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .58rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,.45);
+    }
+
+    .field {
+      width: 100%;
+      background: rgba(250,250,247,.04);
+      border: 1px solid rgba(250,250,247,.1);
+      border-radius: 6px;
+      padding: .72rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: .88rem;
+      color: var(--paper);
+      outline: none;
+      transition: border-color .15s ease;
+    }
+
+    .field::placeholder { color: rgba(250,250,247,.25); }
+    .field:focus { border-color: rgba(18,82,204,.7); }
+
+    textarea.field {
+      resize: vertical;
+      line-height: 1.6;
+      min-height: 110px;
+    }
+
+    /* Submit btn */
+    .submit-btn {
+      display: block;
+      width: 100%;
+      margin-top: 1.5rem;
+      background: var(--signal);
+      color: var(--paper);
+      border: none;
+      border-radius: 6px;
+      padding: .95rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
+      box-shadow: 0 4px 20px rgba(18,82,204,.35);
+    }
+
+    .submit-btn:hover  { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(18,82,204,.5); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .submit-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    /* Divider */
+    .section-divider {
+      height: 1px;
+      background: rgba(250,250,247,.07);
+      margin: 1.75rem 0;
+    }
+
+    /* Redirect state */
+    .redirect-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(18,82,204,.15);
+      border: 1px solid rgba(18,82,204,.3);
+      animation: pulseRing 1.6s cubic-bezier(.4,0,.6,1) infinite;
+    }
+
+    @keyframes pulseRing {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(18,82,204,.25); }
+      50%       { box-shadow: 0 0 0 12px rgba(18,82,204,0); }
+    }
+
+    /* Progress bar */
+    .progress-bar-track {
+      height: 3px;
+      background: rgba(250,250,247,.08);
+      border-radius: 99px;
+      overflow: hidden;
+      margin: 1.5rem 0 1rem;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--fire);
+      border-radius: 99px;
+      width: 0%;
+      transition: width 2s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* Success state */
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(18,82,204,.15);
+      border: 1px solid rgba(18,82,204,.3);
+    }
+
+    /* Section animations */
+    .section.active {
+      animation: fadeUp .4s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Back link */
+    .back-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,.3);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      transition: color .15s ease;
+    }
+
+    .back-link:hover { color: rgba(250,250,247,.65); }
+
+    /* Footer text */
+    .card-footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: .72rem;
+      color: rgba(250,250,247,.2);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: .08em;
+    }
+
+    @media (max-width: 480px) {
+      .card-inner { padding: 2rem 1.5rem 2.25rem; }
+      .star-btn svg { width: 44px; height: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-top-bar"></div>
+  <div class="card-inner">
+
+    <div class="logo-wrap">
+      <img src="logo.png" alt="Logo">
+    </div>
+
+    <!-- ── SECTION 1: Star Rating ── -->
+    <div id="section-rating" class="section active">
+      <p class="step-label">Share Your Experience</p>
+      <h1 class="step-heading">How Did<br>We Do?</h1>
+      <p class="step-sub">Your honest feedback helps us keep our standards high — and lets others know what to expect.</p>
+
+      <div class="stars" id="stars" role="group" aria-label="Rate your experience">
+        <button class="star-btn" data-val="1" aria-label="1 star" onclick="selectStar(1)">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path class="star-path" d="M24 4l5.09 10.32L41 16.18l-8.5 8.28 2.01 11.72L24 30.77l-10.51 5.41 2.01-11.72L7 16.18l11.91-1.86z"/>
+          </svg>
+        </button>
+        <button class="star-btn" data-val="2" aria-label="2 stars" onclick="selectStar(2)">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path class="star-path" d="M24 4l5.09 10.32L41 16.18l-8.5 8.28 2.01 11.72L24 30.77l-10.51 5.41 2.01-11.72L7 16.18l11.91-1.86z"/>
+          </svg>
+        </button>
+        <button class="star-btn" data-val="3" aria-label="3 stars" onclick="selectStar(3)">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path class="star-path" d="M24 4l5.09 10.32L41 16.18l-8.5 8.28 2.01 11.72L24 30.77l-10.51 5.41 2.01-11.72L7 16.18l11.91-1.86z"/>
+          </svg>
+        </button>
+        <button class="star-btn" data-val="4" aria-label="4 stars" onclick="selectStar(4)">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path class="star-path" d="M24 4l5.09 10.32L41 16.18l-8.5 8.28 2.01 11.72L24 30.77l-10.51 5.41 2.01-11.72L7 16.18l11.91-1.86z"/>
+          </svg>
+        </button>
+        <button class="star-btn" data-val="5" aria-label="5 stars" onclick="selectStar(5)">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path class="star-path" d="M24 4l5.09 10.32L41 16.18l-8.5 8.28 2.01 11.72L24 30.77l-10.51 5.41 2.01-11.72L7 16.18l11.91-1.86z"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="star-hint" id="star-hint">Tap a star to rate</div>
+    </div>
+
+    <!-- ── SECTION 2A: Internal Feedback Form (1–3 stars) ── -->
+    <div id="section-feedback" class="section">
+      <button class="back-link" onclick="goBack()">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M7.5 2L3.5 6l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back
+      </button>
+
+      <p class="step-label">We're Sorry to Hear That</p>
+      <h2 class="step-heading">Tell Us<br>What Happened</h2>
+      <p class="step-sub">We want to make it right. Share what went wrong and we'll reach out personally.</p>
+
+      <div class="section-divider"></div>
+
+      <!-- GHL_WEBHOOK: replace [FEEDBACK_WEBHOOK_URL] with your GoHighLevel webhook URL -->
+      <form id="feedback-form" onsubmit="handleFeedbackSubmit(event)">
+        <div class="field-group">
+          <div class="field-wrap">
+            <label class="field-label" for="fb-name">Your Name <span style="color:var(--signal)">*</span></label>
+            <input id="fb-name" name="name" type="text" class="field" placeholder="John Smith" required>
+          </div>
+          <div class="field-wrap">
+            <label class="field-label" for="fb-phone">Phone Number</label>
+            <input id="fb-phone" name="phone" type="tel" class="field" placeholder="(808) 555-1234">
+          </div>
+          <div class="field-wrap">
+            <label class="field-label" for="fb-message">What Could We Have Done Better? <span style="color:var(--signal)">*</span></label>
+            <textarea id="fb-message" name="message" class="field" placeholder="Please describe your experience — the more detail, the more we can improve." required></textarea>
+          </div>
+        </div>
+
+        <button type="submit" id="feedback-submit" class="submit-btn">Send Feedback</button>
+      </form>
+    </div>
+
+    <!-- ── SECTION 2B: Redirect to Google (4–5 stars) ── -->
+    <div id="section-redirect" class="section">
+      <div class="redirect-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M14 3C8.48 3 4 7.48 4 13s4.48 10 10 10 10-4.48 10-10S19.52 3 14 3zm-1 14.5v-5l4.5 2.5-4.5 2.5z" fill="var(--gold)" opacity=".9"/>
+          <path d="M14 3C8.48 3 4 7.48 4 13s4.48 10 10 10 10-4.48 10-10S19.52 3 14 3zm1 5v5.59l3.71 3.71-1.42 1.42L13 14.41V8h2z" fill="var(--gold)" opacity=".9"/>
+          <circle cx="14" cy="13" r="10" stroke="var(--gold)" stroke-width="1.5" fill="none" opacity=".3"/>
+          <path d="M10 13l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <p class="step-label" style="text-align:center;">Thank You!</p>
+      <h2 class="step-heading" style="text-align:center;">We Really<br>Appreciate It</h2>
+      <p class="step-sub" style="text-align:center;">Taking you to Google to share your review — it only takes a moment and means the world to us.</p>
+
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="redirect-progress"></div>
+      </div>
+
+      <p style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,247,.25);text-align:center;">Redirecting in 3 seconds...</p>
+
+      <a id="manual-redirect" href="#" target="_blank" rel="noopener"
+         style="display:block;text-align:center;margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-decoration:underline;text-underline-offset:3px;">
+        Click here if you're not redirected
+      </a>
+    </div>
+
+    <!-- ── SECTION 3: Feedback Submitted ── -->
+    <div id="section-success" class="section">
+      <div class="success-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M6 14l6 6 10-12" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <p class="step-label" style="text-align:center;">Message Received</p>
+      <h2 class="step-heading" style="text-align:center;">Thank You<br>For Telling Us</h2>
+      <p class="step-sub" style="text-align:center;">We take every piece of feedback seriously. A member of our team will follow up with you shortly.</p>
+
+      <div class="section-divider"></div>
+
+      <a href="index.html"
+         style="display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,247,.35);text-decoration:none;transition:color .15s ease;"
+         onmouseover="this.style.color='rgba(250,250,247,.7)'"
+         onmouseout="this.style.color='rgba(250,250,247,.35)'">
+        ← Back to Homepage
+      </a>
+    </div>
+
+  </div><!-- /card-inner -->
+</div><!-- /card -->
+
+<p class="card-footer" style="position:relative;z-index:1;">Your feedback is private and never shared publicly.</p>
+
+<script>
+  // ── CONFIG ──────────────────────────────────────────────────────────────────
+  // Replace these two placeholders before going live:
+  const GOOGLE_REVIEW_URL = '[GOOGLE_REVIEW_URL]';     // e.g. https://g.page/r/XXXXX/review
+  const FEEDBACK_WEBHOOK  = '[FEEDBACK_WEBHOOK_URL]';   // GoHighLevel webhook endpoint
+  // ────────────────────────────────────────────────────────────────────────────
+
+  let selectedRating = 0;
+
+  const starBtns  = document.querySelectorAll('.star-btn');
+  const starsWrap = document.getElementById('stars');
+  const hintEl    = document.getElementById('star-hint');
+
+  const hintTexts = ['', 'Poor', 'Fair', 'Good', 'Great', 'Excellent!'];
+
+  // Hover effects
+  starBtns.forEach(btn => {
+    const val = parseInt(btn.dataset.val);
+
+    btn.addEventListener('mouseenter', () => {
+      starsWrap.classList.add('hovering');
+      hintEl.textContent = hintTexts[val];
+      hintEl.style.color = val <= 3 ? 'rgba(250,200,100,.6)' : 'rgba(96,191,255,.7)';
+      starBtns.forEach(b => {
+        b.classList.toggle('in-range', parseInt(b.dataset.val) <= val);
+      });
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      starsWrap.classList.remove('hovering');
+      hintEl.textContent = selectedRating ? hintTexts[selectedRating] : 'Tap a star to rate';
+      hintEl.style.color = '';
+      starBtns.forEach(b => b.classList.remove('in-range'));
+    });
+  });
+
+  function selectStar(val) {
+    selectedRating = val;
+
+    // Update visual selected state
+    starBtns.forEach(b => {
+      b.classList.toggle('selected', parseInt(b.dataset.val) <= val);
+    });
+
+    hintEl.textContent = hintTexts[val];
+
+    // Small delay so the user sees their selection animate, then transition
+    setTimeout(() => {
+      if (val >= 4) {
+        showSection('section-redirect');
+        startRedirect();
+      } else {
+        showSection('section-feedback');
+      }
+    }, 420);
+  }
+
+  function goBack() {
+    selectedRating = 0;
+    starBtns.forEach(b => b.classList.remove('selected', 'in-range'));
+    hintEl.textContent = 'Tap a star to rate';
+    showSection('section-rating');
+  }
+
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  // Redirect flow
+  function startRedirect() {
+    const url = GOOGLE_REVIEW_URL !== '[GOOGLE_REVIEW_URL]' ? GOOGLE_REVIEW_URL : null;
+
+    document.getElementById('manual-redirect').href = url || '#';
+    if (!url) {
+      document.getElementById('manual-redirect').style.display = 'none';
+    }
+
+    // Animate progress bar
+    const fill = document.getElementById('redirect-progress');
+    requestAnimationFrame(() => {
+      setTimeout(() => { fill.style.width = '100%'; }, 50);
+    });
+
+    // Redirect after 3 seconds
+    setTimeout(() => {
+      if (url) {
+        window.location.href = url;
+      }
+    }, 3000);
+  }
+
+  // Feedback form submission
+  async function handleFeedbackSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('feedback-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const form = e.target;
+    const payload = {
+      rating:  selectedRating,
+      name:    form.name.value,
+      phone:   form.phone.value,
+      message: form.message.value,
+    };
+
+    try {
+      if (FEEDBACK_WEBHOOK !== '[FEEDBACK_WEBHOOK_URL]') {
+        await fetch(FEEDBACK_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+      }
+    } catch (_) {
+      // Silently continue — show success regardless to avoid user confusion
+    }
+
+    showSection('section-success');
+  }
+</script>
+
+</body>
+</html>

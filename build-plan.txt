@@ -1,0 +1,369 @@
+BUILD PLAN — [CLIENT NAME]
+=================================================
+Goal: [TOTAL PAGES] HTML files, fully linked, brand-accurate, screenshot-verified.
+Token strategy: build shared components once, clone templates across similar pages,
+batch screenshot rounds per phase rather than per file.
+
+=================================================
+HOW TO START
+=================================================
+
+Fill in all [BRACKETED] values before handing this plan to Claude.
+Once every bracket is filled, Claude reads it top to bottom and begins Phase 1.
+No other instructions needed.
+
+
+=================================================
+PHASE 1 — FOUNDATION (do this before writing a single page)
+=================================================
+
+1. Stand up serve.mjs and screenshot.mjs in the project root.
+   Verify localhost:3000 serves correctly before touching any HTML.
+
+2. Place brand assets in project root:
+   - logo.png (color — use on dark backgrounds)
+   - logo black.png
+   - logo black small.png
+   Confirm filenames match exactly. Every page references these.
+
+3. Open brand-guidelines.html and lock in:
+   - Google Fonts import URL
+   - All CSS custom properties
+   Write these into a <style> block that will be copy-pasted into every file.
+
+4. Build the NAVBAR block (reusable HTML snippet):
+   - Logo (links to index.html)
+   - Home
+   - Services dropdown → one link per service page
+   - Our Work
+   - Service Areas dropdown → one link per area page
+   - Blog
+   - Contact
+   - [PHONE]
+   - "Get Free Quote" button (links to contact.html)
+
+5. Build the FOOTER block (reusable snippet):
+   - [HOURS]
+   - [PHONE]
+   - [EMAIL]
+   - Links: all service pages, all area pages, Blog, Contact,
+     Terms, Privacy Policy
+
+6. Build SHARED SECTION BLOCKS (snippets, not files):
+   - Quote Form: Full Name, Phone, Message, SMS checkbox, submit button
+   - Reviews Section: heading + Google review CTA
+   - Our Process Section: visual steps
+   - Service Areas Strip: all area names as links
+   - CTA Banner: headline + Get Free Quote button
+
+   These 5 blocks + navbar + footer = the full shared kit.
+   Every page is unique content sandwiched inside this kit.
+
+>>> PHASE 1 SCREENSHOT CHECK <<<
+   Build a bare test.html with just navbar + footer + one shared block.
+   Screenshot it. Fix any brand/spacing issues NOW before they replicate
+   across all files. Do not move to Phase 2 until this looks correct.
+
+
+=================================================
+PHASE 2 — HOME PAGE (index.html)
+=================================================
+
+Sections in order:
+  - Navbar
+  - Hero: [TAGLINE] + Get Free Quote button + [PHONE]
+  - About Us blurb: key trust signals (years experience, credentials, etc.)
+  - Services Overview: one card per service, each linking to its page
+  - Our Process (shared block)
+  - Our Work Preview: 6 images + link to gallery.html
+  - Reviews (shared block)
+  - FAQ: client-provided questions and answers
+  - Service Areas Strip (shared block)
+  - CTA Banner (shared block)
+  - Footer
+
+>>> PHASE 2 SCREENSHOT CHECK <<<
+   Screenshot full page. Compare section by section against the live site.
+   Fix. Re-screenshot. Ship only when no visible gaps remain.
+
+
+=================================================
+PHASE 3 — CORE PAGES (3 files)
+=================================================
+
+Build in this order (simplest to most complex):
+
+  A. contact.html
+     - Navbar
+     - Heading: "CONTACT US"
+     - Subhead: response time promise
+     - Quote Form (shared block)
+     - Reviews (shared block)
+     - Our Process (shared block)
+     - Service Areas Strip (shared block)
+     - Footer
+
+  B. services.html
+     - Navbar
+     - Heading: "Our Services"
+     - One large card per service: name, description, sub-services, link
+     - CTA Banner (shared block)
+     - Footer
+
+  C. gallery.html
+     - Navbar
+     - Heading + Get Free Quote button
+     - Full image grid (placehold.co placeholders sized consistently)
+     - Reviews (shared block)
+     - Our Process (shared block)
+     - Service Areas Strip (shared block)
+     - CTA Banner (shared block)
+     - Footer
+
+>>> PHASE 3 SCREENSHOT CHECK <<<
+   One screenshot round covering all 3 pages. Fix all 3. Re-screenshot.
+
+
+=================================================
+PHASE 4 — SERVICE PAGES ([TOTAL SERVICES] files)
+=================================================
+
+Token strategy: build Service 1 fully first, screenshot and verify it,
+THEN clone it and swap content. Do NOT build all from scratch.
+
+TEMPLATE structure (same for all service pages):
+  - Navbar
+  - Hero: [Service Name] + Get Free Quote + [PHONE]
+  - Description paragraph (unique per service)
+  - Sub-services listed (unique per service)
+  - 3–6 gallery images of that service type
+  - Reviews (shared block)
+  - Our Process (shared block)
+  - Service Areas Strip (shared block)
+  - CTA Banner (shared block)
+  - Footer
+
+Build order:
+  1. service-1.html           (build fully, screenshot, verify)
+  2. service-2.html           [clone #1, swap content]
+  3. service-3.html           [clone #2, swap content]
+  4. service-4.html           [clone #3, swap content]
+  (continue pattern for additional services)
+
+>>> PHASE 4 SCREENSHOT CHECK <<<
+   Screenshot all service pages in one round. Fix all. Re-screenshot.
+
+
+=================================================
+PHASE 5 — SERVICE AREA PAGES ([TOTAL AREAS] files)
+=================================================
+
+Token strategy: build Area 1 fully first, verify it, then clone.
+Only the hero heading and intro paragraph change between files.
+
+TEMPLATE structure (same for all area pages):
+  - Navbar
+  - Hero: "Your dependable [Area Name] [SERVICE TYPE]"
+  - Localized intro paragraph (swaps area name throughout)
+  - Full services list
+  - Reviews (shared block)
+  - Our Process (shared block)
+  - Service Areas Strip (shared block)
+  - CTA Banner (shared block)
+  - Footer
+
+Build order:
+  1. area-1.html              (build fully, screenshot, verify)
+  2. area-2.html              [clone, swap area name]
+  3. area-3.html              [clone, swap area name]
+  4. area-4.html              [clone, swap area name]
+  5. area-5.html              [clone, swap area name]
+  6. area-6.html              [clone, swap area name]
+  (continue pattern for additional areas)
+
+>>> PHASE 5 SCREENSHOT CHECK <<<
+   Screenshot all area pages in one round. Verify area names are correct
+   on each. Fix. Re-screenshot.
+
+
+=================================================
+PHASE 6 — BLOG ([TOTAL POSTS + 1] files)
+=================================================
+
+  A. blog.html (index)
+     - Navbar
+     - Heading: "Blog"
+     - One card per post: title + excerpt + "Read full post" link
+     - CTA Banner (shared block)
+     - Footer
+
+  B. Individual post pages (clone approach)
+     Token strategy: build blog-1.html first, verify, then clone.
+
+     TEMPLATE:
+       - Navbar
+       - Post title (h1)
+       - Body content
+       - CTA Banner (shared block)
+       - Related services links
+       - Footer
+
+     Files:
+       blog-1.html  — [Post 1 title]
+       blog-2.html  — [Post 2 title]
+       blog-3.html  — [Post 3 title]
+       blog-4.html  — [Post 4 title]
+       blog-5.html  — [Post 5 title]
+       blog-6.html  — [Post 6 title]
+       (add more as needed)
+
+>>> PHASE 6 SCREENSHOT CHECK <<<
+   Screenshot blog.html + blog-1.html. If template looks correct,
+   skip individual screenshots for remaining posts (content only,
+   no layout risk). Final pass: click every "Read full post" link.
+
+
+=================================================
+PHASE 7 — FINAL QA (full site pass)
+=================================================
+
+  1. Click every navbar link from every page type — verify no 404s.
+  2. Click every dropdown item (Services, Service Areas).
+  3. Click every "Get Free Quote" button — confirm routes to contact.html.
+  4. Verify logo.png loads on all pages.
+  5. Spot-check mobile layout on 3 pages: index, a service page, an area page.
+  6. Confirm fonts load (not system font fallbacks).
+  7. Verify all blog "Read full post" links resolve correctly.
+  8. Check footer links: all service pages, all area pages, Blog, Contact.
+
+
+=================================================
+PHASE 8 — LEGAL PAGES (2 files)
+=================================================
+
+Source content retrieved from client's GoHighLevel previews:
+  - Privacy Policy: https://app.gohighlevel.com/v2/preview/9iq8HN2qPq8zW7fHlBJK
+  - Terms & Conditions: https://app.gohighlevel.com/v2/preview/nmPdstHiWUaHiBkhTG59
+
+Build in this order:
+
+  A. privacy.html
+     - Navbar
+     - Page header: "Privacy Policy" + last updated date (2024/04/03)
+     - Full policy body — sections in order:
+         1. Interpretation and Definitions
+            - Company, Device, Personal Data, Service, Usage Data
+         2. Collecting and Using Your Personal Data
+            - Types collected: name, email, phone, location, user preferences
+            - Usage purposes: service provision, account management, contract
+              performance, customer contact (email, phone, SMS, push),
+              marketing for similar products, request management, analytics,
+              business transfers
+         3. Sharing Your Personal Data
+            - With Service Providers, during business transfers, with consent
+         4. Retention of Your Personal Data
+            - Retained only as long as necessary for stated purposes
+         5. Transfer of Your Personal Data
+            - May be transferred internationally with appropriate security
+         6. Disclosure of Your Personal Data
+            - Law enforcement and legal requirements
+         7. Security of Your Personal Data
+            - No method of transmission is 100% secure (standard disclaimer)
+         8. Links to Other Websites
+            - Company disclaims responsibility for third-party sites
+         9. Changes to This Privacy Policy
+            - Changes effective upon posting; last updated 2024/04/03
+        10. Contact Us
+            - Direct users to contact page / email for privacy questions
+     - Footer
+
+  B. terms.html  [clone privacy.html structure, swap content]
+     - Navbar
+     - Page header: "Terms & Conditions"
+     - Full terms body — sections in order:
+         1. Messaging Consent
+            - Users must explicitly agree to receive messages via forms or
+              customer service interactions
+         2. Message Types and Frequency
+            - Alerts, reminders, promotional offers, updates, and other
+              relevant communications based on interaction and preferences
+         3. Data Rates and Charges
+            - Standard carrier rates may apply to sent/received messages
+         4. Opt-Out Instructions
+            - Text "STOP" to any message to unsubscribe from SMS
+         5. Privacy Policy
+            - Reference and link to privacy.html
+         6. Message Delivery
+            - No guarantee of timely delivery; network/device issues may apply
+         7. User Obligations
+            - Must comply with applicable laws; no offensive, illegal, or
+              harassing messages
+         8. Compliance with Laws
+            - Telecommunications, privacy, and commercial communication regs
+         9. Changes to Terms
+            - Company reserves right to modify; updates via website or contact
+        10. Contact Us
+            - Direct users to contact page for questions
+     - Footer
+
+LAYOUT NOTES for both pages:
+  - Use a two-column layout on desktop: narrow left sidebar with section
+    jump-links (sticky), wide right column with prose content
+  - On mobile: single column, sidebar hidden
+  - Prose styles: h2 in Rajdhani, body in Inter at .95rem / line-height 1.85
+  - Section dividers between each numbered section
+  - No hero image needed — page header only (same style as blog post header)
+  - Update footer links: Terms of Service href="#" → "terms.html",
+    Privacy Policy href="#" → "privacy.html" on ALL existing pages
+
+>>> PHASE 8 SCREENSHOT CHECK <<<
+  Screenshot privacy.html and terms.html. Verify prose is readable,
+  sidebar jump-links are present on desktop, footer links resolve.
+  After building, do a find-and-replace on all existing HTML files to
+  update the footer Terms/Privacy placeholder hrefs.
+
+
+=================================================
+FILE MANIFEST
+=================================================
+
+  index.html
+  services.html
+  gallery.html
+  contact.html
+  blog.html
+  privacy.html
+  terms.html
+
+  service-1.html
+  service-2.html
+  service-3.html
+  service-4.html
+  (add more as needed)
+
+  area-1.html
+  area-2.html
+  area-3.html
+  area-4.html
+  area-5.html
+  area-6.html
+  (add more as needed)
+
+  blog-1.html
+  blog-2.html
+  blog-3.html
+  blog-4.html
+  blog-5.html
+  blog-6.html
+  (add more as needed)
+
+
+=================================================
+TOKEN-SAVING RULES (enforce throughout)
+=================================================
+
+  - Never build a page from scratch if a clone exists. Clone first, diff second.
+  - Do all screenshot rounds per phase, not per file.
+  - Fix shared component bugs immediately — do not let them replicate.
+  - Do not re-read files that haven't changed since last read.
+  - Keep conversation responses short during build phases — code only, no narration.

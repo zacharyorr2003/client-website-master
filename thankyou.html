@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You — [BRAND NAME]</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Analytics — replace [GA_MEASUREMENT_ID] with your ID (e.g. G-XXXXXXXXXX) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=[GA_MEASUREMENT_ID]"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','[GA_MEASUREMENT_ID]');gtag('event','generate_lead',{event_category:'form',event_label:'quote_submission'});</script>
+
+  <style>
+    :root {
+      --ink:    #080D18;
+      --paper:  #FAFAF7;
+      --void:   #0B1D3A;
+      --gold:   #60BFFF;
+      --amber:  #2E9AF0;
+      --ember:  #1B7FE0;
+      --signal: #1252CC;
+      --logo-a: #0A2F82;
+      --logo-b: #3DA5FF;
+      --fire:   linear-gradient(135deg, #0A2F82, #1252CC, #1B7FE0, #60BFFF);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--ink);
+      color: var(--paper);
+      font-family: 'Inter', sans-serif;
+      font-size: .9rem;
+      line-height: 1.7;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .font-display { font-family: 'Bebas Neue', sans-serif; }
+    .font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+    .btn {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: .65rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform .15s ease, opacity .15s ease;
+      text-decoration: none;
+    }
+    .btn:hover  { transform: translateY(-1px); opacity: .92; }
+    .btn:active { transform: translateY(0); opacity: 1; }
+    .btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+    .btn-primary { background: var(--signal); color: var(--paper); border: none; }
+    .btn-ghost   { background: transparent; color: var(--paper); border: 1px solid rgba(250,250,247,.25); }
+    .btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
+
+    /* Animated checkmark */
+    @keyframes circle-in  { from { stroke-dashoffset: 166; } to { stroke-dashoffset: 0; } }
+    @keyframes check-in   { from { stroke-dashoffset: 48;  } to { stroke-dashoffset: 0; } }
+    @keyframes pulse-ring  { 0%,100% { transform: scale(1); opacity: .15; } 50% { transform: scale(1.15); opacity: 0; } }
+
+    .check-circle { stroke-dasharray: 166; stroke-dashoffset: 166; animation: circle-in .6s .2s ease forwards; }
+    .check-mark   { stroke-dasharray: 48;  stroke-dashoffset: 48;  animation: check-in  .35s .8s ease forwards; }
+    .pulse-ring   { animation: pulse-ring 2s 1s ease-in-out infinite; transform-origin: center; }
+  </style>
+</head>
+<body>
+
+<!-- MINIMAL NAVBAR -->
+<header style="position:sticky;top:0;z-index:50;background:rgba(10,10,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(250,250,247,.06);">
+  <div style="max-width:1280px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;height:72px;">
+    <a href="index.html" style="display:flex;align-items:center;flex-shrink:0;">
+      <img src="logo.png" alt="[BRAND NAME]" style="height:44px;width:auto;">
+    </a>
+    <a href="index.html" class="btn btn-ghost" style="font-size:.68rem;padding:.45rem 1rem;">Back to Home</a>
+  </div>
+</header>
+
+
+<!-- THANK YOU CONTENT -->
+<main style="flex:1;display:flex;align-items:center;justify-content:center;padding:4rem 1.5rem;position:relative;overflow:hidden;">
+
+  <!-- Ambient background -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(18,82,204,.1) 0%, transparent 65%);pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 40% 40% at 80% 20%, rgba(96,191,255,.04) 0%, transparent 60%);pointer-events:none;"></div>
+  <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.03;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+    <rect width="100%" height="100%" filter="url(#grain)"/>
+  </svg>
+
+  <div style="position:relative;z-index:1;max-width:560px;width:100%;text-align:center;">
+
+    <!-- Animated check -->
+    <div style="position:relative;width:96px;height:96px;margin:0 auto 2.5rem;">
+      <svg class="pulse-ring" style="position:absolute;inset:-12px;width:120px;height:120px;" viewBox="0 0 120 120" fill="none">
+        <circle cx="60" cy="60" r="54" fill="rgba(18,82,204,.15)"/>
+      </svg>
+      <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle class="check-circle" cx="48" cy="48" r="44" stroke="url(#grad)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path class="check-mark" d="M28 49l13 13 27-27" stroke="var(--paper)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <defs>
+          <linearGradient id="grad" x1="4" y1="4" x2="92" y2="92" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0A2F82"/>
+            <stop offset="50%" stop-color="#1252CC"/>
+            <stop offset="100%" stop-color="#60BFFF"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <p class="font-mono" style="font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">Request Received</p>
+    <h1 class="font-display" style="font-size:clamp(3rem,10vw,5.5rem);line-height:.9;letter-spacing:.02em;margin:0 0 1.25rem;">THANK YOU!</h1>
+    <p style="color:rgba(250,250,247,.6);font-size:1rem;line-height:1.8;margin:0 0 2.5rem;max-width:420px;margin-left:auto;margin-right:auto;">
+      We've received your quote request and will be in touch within <strong style="color:var(--paper);">24 hours</strong>. In the meantime, feel free to give us a call if you have an urgent need.
+    </p>
+
+    <!-- Call CTA -->
+    <a href="tel:[PHONE]" style="display:inline-flex;align-items:center;gap:.6rem;background:rgba(250,250,247,.04);border:1px solid rgba(250,250,247,.1);border-radius:8px;padding:.9rem 1.75rem;margin-bottom:2.5rem;text-decoration:none;transition:border-color .15s,background .15s;" onmouseover="this.style.borderColor='rgba(18,82,204,.5)';this.style.background='rgba(18,82,204,.08)'" onmouseout="this.style.borderColor='rgba(250,250,247,.1)';this.style.background='rgba(250,250,247,.04)'">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 10.67c-1.06 0-2.09-.17-3.05-.48a1 1 0 0 0-1.02.23l-1.5 1.5a10.83 10.83 0 0 1-4.35-4.35l1.5-1.5a1 1 0 0 0 .23-1.02A9.48 9.48 0 0 1 5.33 2a1 1 0 0 0-1-.99H2a1 1 0 0 0-1 1A13 13 0 0 0 14 15a1 1 0 0 0 1-1v-2.33a1 1 0 0 0-.99-1z" fill="var(--signal)"/></svg>
+      <span class="font-mono" style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);">[PHONE]</span>
+    </a>
+
+    <!-- Nav options -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;">
+      <a href="index.html" class="btn btn-ghost" style="font-size:.7rem;padding:.65rem 1.5rem;">Back to Home</a>
+      <a href="services.html" class="btn btn-primary" style="font-size:.7rem;padding:.65rem 1.5rem;">View Our Services</a>
+    </div>
+
+  </div>
+</main>
+
+
+<!-- MINIMAL FOOTER -->
+<footer style="background:#0d0d12;border-top:1px solid rgba(250,250,247,.06);padding:1.5rem;">
+  <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <p class="font-mono" style="font-size:.62rem;letter-spacing:.1em;color:rgba(250,250,247,.2);">&copy; <span id="footer-year"></span> [BRAND NAME]. All rights reserved.</p>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="privacy.html" class="font-mono" style="font-size:.62rem;letter-spacing:.1em;color:rgba(250,250,247,.25);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='rgba(250,250,247,.5)'" onmouseout="this.style.color='rgba(250,250,247,.25)'">Privacy Policy</a>
+      <a href="terms.html"   class="font-mono" style="font-size:.62rem;letter-spacing:.1em;color:rgba(250,250,247,.25);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='rgba(250,250,247,.5)'" onmouseout="this.style.color='rgba(250,250,247,.25)'">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

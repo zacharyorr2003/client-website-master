@@ -1,0 +1,11 @@
+# robots.txt — [BRAND NAME]
+# Replace [DOMAIN] with your live domain, e.g. https://www.yourbrand.com
+
+User-agent: *
+Allow: /
+
+# Exclude thank-you page from indexing (conversion tracking only)
+Disallow: /thankyou.html
+
+# Sitemap location — update [DOMAIN] before going live
+Sitemap: [DOMAIN]/sitemap.xml

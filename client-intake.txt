@@ -1,0 +1,539 @@
+╔══════════════════════════════════════════════════════════════╗
+║              CLIENT WEBSITE INTAKE FORM                      ║
+║  Fill in every field. Leave blank if you don't know.        ║
+║  Hand this back when done — the build starts immediately.   ║
+╚══════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  STEP 1 OF 2 — YOUR BUSINESS  (fill this section first)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+What type of business is this?
+  (e.g. pressure washing, roofing, HVAC, landscaping, plumbing)
+
+  Business Niche     :
+
+What city/area do you serve?
+  (Used throughout the site for local SEO)
+
+  Service Area       :
+
+Do you have an existing website?
+  (If yes, paste the URL — content will be pulled from it automatically)
+
+  Existing Website   :
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 0 — INTEGRATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  These connect your website to third-party tools. Fill before going live.
+
+  GoHighLevel Form URL  :
+    → GHL → Sites → Forms → your form → Integrations → Webhook URL
+
+  Google Analytics ID   :
+    → GA4 → Admin → Data Streams → your stream  (format: G-XXXXXXXXXX)
+
+  Live Domain           :
+    → Your production URL, e.g. https://www.yourbrand.com
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 1 — BUSINESS INFO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Business Name         :
+  Tagline               :
+  Phone Number          :
+  Email Address         :
+  Business Hours        :
+  Google Review Link    :
+
+  Physical Address      :
+    (Write "Service area only" if you have no storefront)
+
+  License Number(s)     :
+    1.
+    2.
+
+  Languages Spoken      :
+    (Leave blank if English only)
+
+  Emergency / 24-7 Service?
+    (e.g. "24/7 emergency service available" — leave blank if standard hours)
+    :
+
+  Financing Options     :
+    (e.g. "0% financing available" — leave blank if not offered)
+    :
+
+  Payment Methods       :
+    [ ] Cash   [ ] Check   [ ] Credit/Debit Card   [ ] Financing   [ ] Venmo/Zelle
+
+  Main Button Text      :
+    (Default is "Get Free Quote" — change if you prefer something else)
+    (Options: "Schedule Free Inspection" / "Request a Callback" / "Get an Estimate")
+    :
+
+  Trust Signals         :
+    (e.g. "Licensed & insured", "Military owned", "40+ years experience")
+    1.
+    2.
+    3.
+
+  Guarantee / Warranty  :
+    (e.g. "100% satisfaction guaranteed" or "5-year workmanship warranty")
+    :
+
+  Hero Stats            :
+    (3 numbers shown prominently on the homepage)
+    Stat 1   Number:          Label: (e.g. Projects Completed)
+    Stat 2   Number:          Label: (e.g. Years in Business)
+    Stat 3   Number:          Label: (e.g. 5-Star Reviews)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 2 — ABOUT US
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Owner / Founder Name  :
+  Year Founded          :
+
+  Business Description  :
+    (2–4 sentences about who you are and what you do)
+
+
+
+
+  What makes you stand out from competitors?
+    1.
+    2.
+    3.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 3 — SERVICES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Default is 4 service pages. Copy a block below to add more.
+
+  Total number of services :
+
+  ┌─ SERVICE 1 ───────────────────────────────────────────────┐
+  │ Service Name        :
+  │ URL Slug            :  (e.g. "roof-cleaning" → /roof-cleaning.html)
+  │ Short Description   :  (1–2 sentences for the services card)
+  │
+  │ Full Description    :  (2–4 sentences for the service's own page)
+  │
+  │ Sub-Services        :
+  │   1.
+  │   2.
+  │   3.
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ SERVICE 2 ───────────────────────────────────────────────┐
+  │ Service Name        :
+  │ URL Slug            :
+  │ Short Description   :
+  │ Full Description    :
+  │ Sub-Services        :
+  │   1.
+  │   2.
+  │   3.
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ SERVICE 3 ───────────────────────────────────────────────┐
+  │ Service Name        :
+  │ URL Slug            :
+  │ Short Description   :
+  │ Full Description    :
+  │ Sub-Services        :
+  │   1.
+  │   2.
+  │   3.
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ SERVICE 4 ───────────────────────────────────────────────┐
+  │ Service Name        :
+  │ URL Slug            :
+  │ Short Description   :
+  │ Full Description    :
+  │ Sub-Services        :
+  │   1.
+  │   2.
+  │   3.
+  └───────────────────────────────────────────────────────────┘
+
+  (Copy a block above to add more services)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 4 — SERVICE AREAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Default is 6 area pages. Copy a block below to add more.
+
+  Total number of areas :
+
+  ┌─ AREA 1 ──────────────────────────────────────────────────┐
+  │ Area Name           :
+  │ URL Slug            :  (e.g. "austin" → /austin.html)
+  │ Localized Note      :  (optional — 1–2 sentences about serving this area)
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ AREA 2 ──────────────────────────────────────────────────┐
+  │ Area Name           :
+  │ URL Slug            :
+  │ Localized Note      :
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ AREA 3 ──────────────────────────────────────────────────┐
+  │ Area Name           :
+  │ URL Slug            :
+  │ Localized Note      :
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ AREA 4 ──────────────────────────────────────────────────┐
+  │ Area Name           :
+  │ URL Slug            :
+  │ Localized Note      :
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ AREA 5 ──────────────────────────────────────────────────┐
+  │ Area Name           :
+  │ URL Slug            :
+  │ Localized Note      :
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ AREA 6 ──────────────────────────────────────────────────┐
+  │ Area Name           :
+  │ URL Slug            :
+  │ Localized Note      :
+  └───────────────────────────────────────────────────────────┘
+
+  (Copy a block above to add more areas)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 5 — BLOG  ✦ No writing needed — AI-generated
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Blog posts are written automatically based on your niche.
+  Just pick a tone and number of posts.
+
+  Tone                  :
+    [ ] Educational & helpful  (default)
+    [ ] Friendly & conversational
+    [ ] Professional & formal
+
+  Number of Posts       :  (default: 6, max: 12)
+
+  Any specific topics you want covered?  (optional)
+    1.
+    2.
+    3.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 6 — FAQ  ✦ No writing needed — AI-generated
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  8 questions and answers are written automatically for your niche.
+
+  Any specific questions you want included?  (optional)
+    1.
+    2.
+    3.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 7 — OUR PROCESS  ✦ No writing needed — AI-generated
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  A 4-step process is generated automatically for your type of business.
+
+  Want to override any steps with your own wording?  (optional)
+    Step 1 :
+    Step 2 :
+    Step 3 :
+    Step 4 :
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 8 — QUOTE FORM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  CTA Headline          :  (e.g. "Ready to Get Started?")
+  CTA Sub-text          :  (optional line under the headline)
+
+  Fields to include     :
+    [ ] Full Name
+    [ ] Phone
+    [ ] Email
+    [ ] Service Type dropdown
+    [ ] Message / describe your needs
+    [ ] SMS opt-in checkbox
+
+  Submit Button Text    :  (e.g. "Get Free Quote" or "Request a Callback")
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 9 — FOOTER LINKS  ✦ Auto-handled
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Terms and Privacy pages are already linked automatically.
+  Add extra links here if needed (e.g. BBB profile, trade association).
+
+    Label :          URL :
+    Label :          URL :
+    Label :          URL :
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 10 — BRAND ASSETS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Color logo filename   :  (e.g. logo.png)
+  Black logo filename   :  (e.g. logo-black.png)
+  Small logo filename   :  (e.g. logo-small.png)
+
+  Use color logo on     :  [ ] Dark backgrounds   [ ] Light backgrounds
+
+  Brand guidelines file :  (e.g. brand-guidelines.html)
+
+  Favicon               :  (e.g. favicon.ico — leave blank to use small logo)
+
+  Social Share Image    :  (e.g. og-image.jpg — 1200×630px recommended)
+    (Shown when your site is shared on Facebook, iMessage, Slack, etc.)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 11 — COLORS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Pick a color palette, or enter custom hex codes.
+  Leave blank to keep the default navy blue theme.
+
+  Palette               :
+    [ ] Navy Blue (default) — dark navy, blue accents — all industries
+    [ ] Forest Green        — landscaping, lawn care, tree service
+    [ ] Burnt Orange        — construction, contracting, roofing
+    [ ] Deep Red            — plumbing, fire protection, restoration
+    [ ] Charcoal Grey       — HVAC, concrete, industrial services
+    [ ] Custom              — enter your brand colors below
+
+  If Custom, fill these in (hex codes only, e.g. #1252CC):
+    Background Color      :  (default: #080D18 — the dark page background)
+    Primary Accent        :  (default: #1252CC — buttons, CTAs, highlights)
+    Gradient Dark         :  (default: #0A2F82 — dark end of gradient text)
+    Gradient Light        :  (default: #3DA5FF — light end of gradient text)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 12 — GALLERY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Approximate image count :
+  Image source            :  [ ] I'll provide images   [ ] Use placeholders for now
+  Categories / labels     :  (e.g. "Before & After, Driveways, Roofs")
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 13 — REVIEWS & SOCIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Google Review Link    :
+    → Google Business Profile → Get more reviews → copy the link
+
+  Google Business Name  :  (exact name as it appears on Google)
+  Overall Star Rating   :  (e.g. 4.9)
+  Total Review Count    :  (e.g. 127)
+
+  Up to 6 featured reviews to display on the site:
+
+  ┌─ REVIEW 1 ────────────────────────────────────────────────┐
+  │ Reviewer Name  :
+  │ Date           :  (e.g. March 2025)
+  │ Review Text    :
+  │
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ REVIEW 2 ────────────────────────────────────────────────┐
+  │ Reviewer Name  :
+  │ Date           :
+  │ Review Text    :
+  │
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ REVIEW 3 ────────────────────────────────────────────────┐
+  │ Reviewer Name  :
+  │ Date           :
+  │ Review Text    :
+  │
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ REVIEW 4 ────────────────────────────────────────────────┐
+  │ Reviewer Name  :
+  │ Date           :
+  │ Review Text    :
+  │
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ REVIEW 5 ────────────────────────────────────────────────┐
+  │ Reviewer Name  :
+  │ Date           :
+  │ Review Text    :
+  │
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─ REVIEW 6 ────────────────────────────────────────────────┐
+  │ Reviewer Name  :
+  │ Date           :
+  │ Review Text    :
+  │
+  └───────────────────────────────────────────────────────────┘
+
+  Elfsight App ID       :
+    (Optional — paste your Elfsight widget ID to show live Google reviews)
+
+  Facebook URL          :
+  Instagram URL         :
+  Yelp URL              :
+  Other                 :
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SECTION 14 — LEGAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Custom SMS consent text :
+    (Leave blank to use the default consent language)
+
+  Any other legal text    :
+
+
+╔══════════════════════════════════════════════════════════════╗
+║  That's it! Send this file back and the build starts.       ║
+╚══════════════════════════════════════════════════════════════╝
+
+
+
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  INSTRUCTIONS FOR CLAUDE — DO NOT SEND TO CLIENT
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+MISSING FIELDS: Before starting the build, scan every field. If any required
+field is blank, list all missing fields and ask the user to fill them in first.
+Do not use placeholder text or skip fields silently.
+
+NO EMOJIS: Never use emojis anywhere in generated content — headlines, body
+copy, button text, blog articles, FAQ answers, process steps, meta descriptions,
+or any other text written into HTML files. No exceptions.
+
+EXISTING WEBSITE: If "Existing Website" is filled, fetch that URL with WebFetch
+before doing anything else. Extract: business name, tagline, phone, email,
+hours, services, service areas, about us copy, process steps, team info, trust
+signals, FAQ and review content. Real content from the site always takes
+priority over blank fields in this form.
+
+SEO PASS: After all placeholders are replaced, run a full SEO pass on every
+HTML file:
+  - Unique, keyword-rich <title> tags
+  - Meta description tags (150–160 chars)
+  - Open Graph tags (og:title, og:description, og:url, og:image)
+  - Canonical <link> tags pointing to the live URL
+  - One H1 per page, proper H2/H3 hierarchy
+  - Descriptive alt text on every image
+  - LocalBusiness JSON-LD schema on index.html
+  - Internal links between service and area pages
+  - Replace [DOMAIN] in sitemap.xml and robots.txt
+
+PRIMARY CTA: If "Main Button Text" is filled, replace every instance of
+"Get Free Quote" across all HTML files — navbar, hero, CTA banners, footer,
+and inline CTAs.
+
+HERO STATS: If Hero Stats are filled, replace [PROJECTS COMPLETED],
+[YEARS IN BUSINESS], and the third stat in index.html. If Founded Year is
+filled but Years in Business is blank, calculate from the current year.
+
+FAVICON & OG IMAGE: Add <link rel="icon"> to every HTML file using the Favicon
+field. Add <meta property="og:image"> using the Social Share Image field. Fall
+back to small logo for favicon and color logo for OG image if blank.
+
+PROOFREADING: After the build is complete, read every HTML file and fix any
+spelling errors, grammar mistakes, or awkward phrasing. Pay extra attention to
+blog articles, FAQ answers, process steps, hero headlines, and about us copy.
+Report a summary of corrections when done.
+
+AUTO-GENERATED SECTIONS (5, 6, 7, 9) — all generated from the Niche field:
+
+  SECTION 5 — BLOG:
+  1. Invent 6 blog post titles targeting high-value local search queries
+     (mix: how-to guides, cost guides, comparisons, seasonal tips, local advice)
+  2. Choose keyword-rich slugs (e.g. "how-to-choose-a-landscaper-austin-tx")
+  3. Write full article bodies (800–1200 words, 4+ H2 sections per post)
+  4. Write a 2-sentence excerpt per post
+  5. Update blog.html index cards with real titles, excerpts, and slug links
+  6. Populate blog-1.html through blog-6.html with the generated articles
+  7. Naturally link each post to at least one relevant service page
+  8. Weave local references into articles if a service area is provided
+
+  SECTION 6 — FAQ:
+  1. Generate 8 FAQ questions covering: pricing, timeline, licensing, what's
+     included, what to expect, how to prepare, guarantees, service area
+  2. Write clear, helpful answers (3–5 sentences, conversational tone)
+  3. Replace all [FAQ QUESTION/ANSWER] placeholders in index.html and faq.html
+  4. Update faq.html category filter tabs to match real topic groups
+
+  SECTION 7 — OUR PROCESS:
+  1. Generate a 4-step process accurate to the business type
+  2. Write a 2–4 word label and 1–2 sentence description per step
+  3. Replace all [STEP LABEL / DESCRIPTION] placeholders across every page
+     that includes the process section
+
+  SECTION 9 — FOOTER LINKS:
+  1. terms.html and privacy.html are already built — link them automatically
+  2. Add one or two niche-relevant trust links if appropriate (BBB, licensing
+     board, trade association) — use [PLACEHOLDER] if no URL is provided
+
+COLORS: If a palette other than "Navy Blue (default)" is selected, or if
+Custom values are provided, replace the :root { ... } CSS block in EVERY
+HTML file. Also find every inline rgba() that uses the old signal RGB
+(18,82,204) and replace it with the new signal's RGB equivalent.
+
+  Palette lookup table (replace EVERY :root block with these values):
+
+  Forest Green — signal RGB: 24,136,46
+    --ink:#070F08; --paper:#FAFAF7; --void:#0B2210; --gold:#4ECA70;
+    --amber:#38B055; --ember:#259040; --signal:#18882E;
+    --logo-a:#0C5520; --logo-b:#4ECA70;
+    --fire:linear-gradient(135deg,#0C5520,#18882E,#259040,#4ECA70)
+
+  Burnt Orange — signal RGB: 200,90,16
+    --ink:#0F0905; --paper:#FAFAF7; --void:#2A1A08; --gold:#F0A040;
+    --amber:#E07820; --ember:#D06018; --signal:#C85A10;
+    --logo-a:#7A2D08; --logo-b:#F0A040;
+    --fire:linear-gradient(135deg,#7A2D08,#C85A10,#D06018,#F0A040)
+
+  Deep Red — signal RGB: 192,16,32
+    --ink:#0F0507; --paper:#FAFAF7; --void:#280A10; --gold:#FF7080;
+    --amber:#E03040; --ember:#D01828; --signal:#C01020;
+    --logo-a:#780A14; --logo-b:#FF5060;
+    --fire:linear-gradient(135deg,#780A14,#C01020,#D01828,#FF5060)
+
+  Charcoal Grey — signal RGB: 74,85,104
+    --ink:#0C0C0C; --paper:#FAFAF7; --void:#1E1E1E; --gold:#A0AEC0;
+    --amber:#718096; --ember:#4A5568; --signal:#4A5568;
+    --logo-a:#2D3748; --logo-b:#A0AEC0;
+    --fire:linear-gradient(135deg,#2D3748,#4A5568,#718096,#A0AEC0)
+
+  Custom palette rules:
+    --signal    = Primary Accent hex provided
+    --logo-a    = Gradient Dark hex provided
+    --logo-b    = Gradient Light hex provided
+    --ink       = Background Color hex provided
+    --void      = derive by lightening --ink 8–12% (keep very dark)
+    --ember     = midpoint between --signal and --logo-a
+    --amber     = midpoint between --signal and --logo-b
+    --gold      = same as --logo-b
+    --paper     = #FAFAF7 (do not change)
+    --fire      = linear-gradient(135deg, [logo-a], [signal], [ember], [logo-b])
+    For rgba overlays: compute the RGB of the new --signal and replace
+    all instances of rgba(18,82,204,...) with rgba([R],[G],[B],...)

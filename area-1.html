@@ -1,0 +1,732 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[SERVICE TYPE] in [AREA 1 NAME] — [BRAND NAME]</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --ink:    #080D18;
+      --paper:  #FAFAF7;
+      --void:   #0B1D3A;
+      --gold:   #60BFFF;
+      --amber:  #2E9AF0;
+      --ember:  #1B7FE0;
+      --signal: #1252CC;
+      --logo-a: #0A2F82;
+      --logo-b: #3DA5FF;
+      --fire:   linear-gradient(135deg, #0A2F82, #1252CC, #1B7FE0, #60BFFF);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--ink);
+      color: var(--paper);
+      font-family: 'Inter', sans-serif;
+      font-size: .9rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .font-display { font-family: 'Bebas Neue', sans-serif; }
+    .font-heading  { font-family: 'Rajdhani', sans-serif; font-weight: 700; }
+    .font-mono     { font-family: 'JetBrains Mono', monospace; }
+
+    .text-fire   { background: var(--fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .text-signal { color: var(--signal); }
+    .text-body   { color: rgba(250,250,247,.65); }
+
+    .card {
+      background: rgba(250,250,247,.03);
+      border: 1px solid rgba(250,250,247,.07);
+      border-radius: 8px;
+    }
+    .divider { border-bottom: 1px solid rgba(250,250,247,.06); }
+
+    .btn {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: .65rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform .15s ease, opacity .15s ease;
+      text-decoration: none;
+    }
+    .btn:hover  { transform: translateY(-1px); opacity: .92; }
+    .btn:active { transform: translateY(0); opacity: 1; }
+    .btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+
+    .btn-primary { background: var(--signal); color: var(--paper); border: none; }
+    .btn-ghost   { background: transparent; color: var(--paper); border: 1px solid rgba(250,250,247,.25); }
+    .btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
+
+    .nav-dropdown { display: none; }
+    .nav-item:focus-within .nav-dropdown { display: block; }
+
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; flex-direction: column; gap: 1rem; }
+
+    /* Service card hover border */
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--fire);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+    }
+
+    /* Stat item */
+    .stat-item {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      line-height: 1;
+      background: var(--fire);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    @media (max-width: 900px) {
+      #navbar nav, #navbar .nav-phone { display: none !important; }
+      #hamburger { display: block !important; }
+    }
+    @media (max-width: 768px) {
+      #services-grid { grid-template-columns: 1fr !important; }
+      #stats-grid    { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 680px) {
+      #footer-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 420px) {
+      #footer-grid { grid-template-columns: 1fr !important; }
+      #stats-grid  { grid-template-columns: 1fr !important; }
+    }
+  </style>
+
+  <!-- Google Analytics — replace [GA_MEASUREMENT_ID] with your ID (e.g. G-XXXXXXXXXX) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=[GA_MEASUREMENT_ID]"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','[GA_MEASUREMENT_ID]');</script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header id="navbar" style="position:sticky;top:0;z-index:50;background:rgba(10,10,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(250,250,247,.06);">
+  <div style="max-width:1280px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;height:72px;">
+
+    <a href="index.html" style="display:flex;align-items:center;flex-shrink:0;">
+      <img src="logo.png" alt="[BRAND NAME]" style="height:44px;width:auto;">
+    </a>
+
+    <nav style="display:flex;align-items:center;gap:1.5rem;" aria-label="Main navigation">
+
+      <a href="index.html" class="font-mono"
+         style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+         onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
+        Home
+      </a>
+
+      <div class="nav-item" style="position:relative;">
+        <button class="font-mono"
+                style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.35rem;padding:0;transition:color .15s ease;"
+                onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
+          Services
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="opacity:.5;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:220px;background:#141418;border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
+          <a href="service-1.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 1 NAME]</a>
+          <a href="service-2.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 2 NAME]</a>
+          <a href="service-3.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 3 NAME]</a>
+          <a href="service-4.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 4 NAME]</a>
+        </div>
+      </div>
+
+      <a href="gallery.html" class="font-mono"
+         style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+         onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
+        Our Work
+      </a>
+
+      <!-- Service Areas — active -->
+      <div class="nav-item" style="position:relative;">
+        <button class="font-mono"
+                style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.35rem;padding:0;">
+          Service Areas
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="opacity:.5;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:200px;background:#141418;border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
+          <a href="area-1.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:var(--paper);text-decoration:none;background:rgba(18,82,204,.1);">[AREA 1 NAME]</a>
+          <a href="area-2.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 2 NAME]</a>
+          <a href="area-3.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 3 NAME]</a>
+          <a href="area-4.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 4 NAME]</a>
+          <a href="area-5.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 5 NAME]</a>
+          <a href="area-6.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 6 NAME]</a>
+        </div>
+      </div>
+
+      <a href="blog.html" class="font-mono"
+         style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+         onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
+        Blog
+      </a>
+
+      <a href="contact.html" class="font-mono"
+         style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+         onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
+        Contact
+      </a>
+
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <a href="tel:[PHONE]" class="font-mono nav-phone"
+         style="font-size:.68rem;letter-spacing:.1em;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s ease;"
+         onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[PHONE]</a>
+      <a href="contact.html" class="btn btn-primary" style="padding:.5rem 1.25rem;font-size:.7rem;">Get Free Quote</a>
+    </div>
+
+    <button id="hamburger" aria-label="Open menu"
+            style="display:none;background:none;border:none;cursor:pointer;padding:.25rem;color:var(--paper);"
+            onclick="document.getElementById('mobile-menu').classList.toggle('open');">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" style="background:#0f0f14;border-top:1px solid rgba(250,250,247,.06);padding:1.25rem 1.5rem;">
+    <a href="index.html"    class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Home</a>
+    <a href="services.html" class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Services</a>
+    <a href="service-1.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 1 NAME]</a>
+    <a href="service-2.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 2 NAME]</a>
+    <a href="service-3.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 3 NAME]</a>
+    <a href="service-4.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 4 NAME]</a>
+    <a href="gallery.html"   class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Our Work</a>
+    <a href="#" class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--signal);text-decoration:none;">Service Areas</a>
+    <a href="area-1.html" style="padding-left:1rem;font-size:.8rem;color:var(--paper);text-decoration:none;">[AREA 1 NAME]</a>
+    <a href="area-2.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 2 NAME]</a>
+    <a href="area-3.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 3 NAME]</a>
+    <a href="area-4.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 4 NAME]</a>
+    <a href="area-5.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 5 NAME]</a>
+    <a href="area-6.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 6 NAME]</a>
+    <a href="blog.html"      class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Blog</a>
+    <a href="faq.html"       class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;">FAQ</a>
+    <a href="contact.html"   class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Contact</a>
+    <a href="contact.html" class="btn btn-primary" style="text-align:center;margin-top:.5rem;">Get Free Quote</a>
+  </div>
+</header>
+
+
+<!-- HERO -->
+<section style="position:relative;min-height:580px;display:flex;align-items:center;overflow:hidden;" class="divider">
+
+  <!-- Background image -->
+  <div style="position:absolute;inset:0;">
+    <img src="https://placehold.co/1440x580/0a0f1e/1a2540?text=[AREA+1+HERO+PHOTO]"
+         alt="[AREA 1 NAME]"
+         style="width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(8,13,24,.94) 0%, rgba(8,13,24,.65) 55%, rgba(8,13,24,.25) 100%);"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 15% 50%, rgba(10,47,130,.28) 0%, transparent 65%);"></div>
+  </div>
+
+  <!-- Noise grain -->
+  <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.04;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
+    <filter id="hero-grain"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+    <rect width="100%" height="100%" filter="url(#hero-grain)"/>
+  </svg>
+
+  <!-- Content -->
+  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:6rem 1.5rem 5rem;width:100%;">
+    <!-- Breadcrumb -->
+    <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:1.25rem;">
+      <a href="index.html" class="font-mono" style="font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,250,247,.35);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='rgba(250,250,247,.65)'" onmouseout="this.style.color='rgba(250,250,247,.35)'">Home</a>
+      <span class="font-mono" style="font-size:.65rem;color:rgba(250,250,247,.2);">/</span>
+      <span class="font-mono" style="font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);">Service Areas</span>
+    </div>
+
+    <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:1rem;">Now Serving</p>
+    <h1 class="font-display" style="font-size:clamp(3.5rem,10vw,9rem);line-height:.88;letter-spacing:.02em;margin:0 0 1.25rem;">
+      <span class="text-fire">[AREA 1 NAME LINE 1]</span><br>
+      <span style="color:var(--paper);">[AREA 1 NAME LINE 2]</span>
+    </h1>
+    <p style="color:rgba(250,250,247,.65);font-size:1rem;max-width:480px;line-height:1.7;margin:0 0 2.5rem;">[AREA 1 HERO SUBTEXT] serving [Area 1 Name] and surrounding neighborhoods. Licensed, insured, and trusted by hundreds of local homeowners."]</p>
+    <div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-primary" style="font-size:.8rem;padding:.75rem 2rem;">Get Free Quote</a>
+      <a href="tel:[PHONE]" class="font-mono" style="font-size:.78rem;letter-spacing:.1em;color:rgba(250,250,247,.75);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.75)'">[PHONE]</a>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- INTRO + LOCAL TRUST -->
+<section style="padding:5rem 1.5rem;" class="divider">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;" id="intro-grid">
+      <!-- Left: area description -->
+      <div>
+        <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">Serving [AREA 1 NAME]</p>
+        <h2 class="font-heading" style="font-size:clamp(1.75rem,3.5vw,2.5rem);letter-spacing:.03em;text-transform:uppercase;margin:0 0 1.5rem;line-height:1.1;">[AREA 1 SECTION HEADING]</h2>
+        <p style="color:rgba(250,250,247,.65);font-size:.95rem;line-height:1.8;margin:0 0 1.25rem;">[AREA 1 DESCRIPTION PARAGRAPH 1]</p>
+        <p style="color:rgba(250,250,247,.55);font-size:.9rem;line-height:1.8;margin:0 0 2.5rem;">[AREA 1 DESCRIPTION PARAGRAPH 2]</p>
+        <a href="contact.html" class="btn btn-primary" style="font-size:.75rem;">Schedule a Free Estimate</a>
+      </div>
+
+      <!-- Right: local stats -->
+      <div>
+        <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:1.5rem;">By the Numbers</p>
+        <div id="stats-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(250,250,247,.06);border:1px solid rgba(250,250,247,.06);border-radius:8px;overflow:hidden;">
+
+          <div class="stat-item" style="background:rgba(250,250,247,.02);">
+            <div class="stat-number">[##]</div>
+            <p class="font-mono" style="font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,247,.4);margin:.5rem 0 0;">Homes Served</p>
+          </div>
+
+          <div class="stat-item" style="background:rgba(250,250,247,.02);">
+            <div class="stat-number">[##]</div>
+            <p class="font-mono" style="font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,247,.4);margin:.5rem 0 0;">Years in [AREA 1]</p>
+          </div>
+
+          <div class="stat-item" style="background:rgba(250,250,247,.01);">
+            <div class="stat-number">[##]</div>
+            <p class="font-mono" style="font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,247,.4);margin:.5rem 0 0;">5-Star Reviews</p>
+          </div>
+
+          <div class="stat-item" style="background:rgba(250,250,247,.01);">
+            <div class="stat-number">[##]h</div>
+            <p class="font-mono" style="font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,247,.4);margin:.5rem 0 0;">Avg Response</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SERVICES IN THIS AREA -->
+<section style="padding:5rem 1.5rem;" class="divider">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <div style="margin-bottom:3rem;">
+      <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">What We Offer</p>
+      <h2 class="font-display" style="font-size:clamp(2.5rem,5vw,4rem);line-height:.95;margin:0;">SERVICES IN [AREA 1 NAME]</h2>
+    </div>
+
+    <div id="services-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+
+      <!-- Service 1 -->
+      <a href="service-1.html" class="card service-card" style="padding:2.25rem;text-decoration:none;display:block;">
+        <div style="width:44px;height:44px;background:rgba(18,82,204,.15);border:1px solid rgba(18,82,204,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <p class="font-mono" style="font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);margin-bottom:.6rem;">Service 01</p>
+        <h3 class="font-heading" style="font-size:1.35rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .75rem;color:var(--paper);">[SERVICE 1 NAME]</h3>
+        <p style="color:rgba(250,250,247,.55);font-size:.85rem;line-height:1.7;margin:0 0 1.5rem;">[SERVICE 1 SHORT DESCRIPTION]</p>
+        <span class="font-mono" style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);">Learn More →</span>
+      </a>
+
+      <!-- Service 2 -->
+      <a href="service-2.html" class="card service-card" style="padding:2.25rem;text-decoration:none;display:block;">
+        <div style="width:44px;height:44px;background:rgba(18,82,204,.15);border:1px solid rgba(18,82,204,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <p class="font-mono" style="font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);margin-bottom:.6rem;">Service 02</p>
+        <h3 class="font-heading" style="font-size:1.35rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .75rem;color:var(--paper);">[SERVICE 2 NAME]</h3>
+        <p style="color:rgba(250,250,247,.55);font-size:.85rem;line-height:1.7;margin:0 0 1.5rem;">[SERVICE 2 SHORT DESCRIPTION]</p>
+        <span class="font-mono" style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);">Learn More →</span>
+      </a>
+
+      <!-- Service 3 -->
+      <a href="service-3.html" class="card service-card" style="padding:2.25rem;text-decoration:none;display:block;">
+        <div style="width:44px;height:44px;background:rgba(18,82,204,.15);border:1px solid rgba(18,82,204,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <p class="font-mono" style="font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);margin-bottom:.6rem;">Service 03</p>
+        <h3 class="font-heading" style="font-size:1.35rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .75rem;color:var(--paper);">[SERVICE 3 NAME]</h3>
+        <p style="color:rgba(250,250,247,.55);font-size:.85rem;line-height:1.7;margin:0 0 1.5rem;">[SERVICE 3 SHORT DESCRIPTION]</p>
+        <span class="font-mono" style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);">Learn More →</span>
+      </a>
+
+      <!-- Service 4 -->
+      <a href="service-4.html" class="card service-card" style="padding:2.25rem;text-decoration:none;display:block;">
+        <div style="width:44px;height:44px;background:rgba(18,82,204,.15);border:1px solid rgba(18,82,204,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--signal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <p class="font-mono" style="font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);margin-bottom:.6rem;">Service 04</p>
+        <h3 class="font-heading" style="font-size:1.35rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .75rem;color:var(--paper);">[SERVICE 4 NAME]</h3>
+        <p style="color:rgba(250,250,247,.55);font-size:.85rem;line-height:1.7;margin:0 0 1.5rem;">[SERVICE 4 SHORT DESCRIPTION]</p>
+        <span class="font-mono" style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);">Learn More →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     REVIEWS
+     ============================================================ -->
+<section style="padding:6rem 1.5rem;" class="divider">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:3.5rem;">
+      <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">Customer Reviews</p>
+      <h2 class="font-display" style="font-size:clamp(2.5rem,5vw,4rem);line-height:.95;margin:0 0 1rem;">DISCOVER WHAT OUR CUSTOMERS HAVE TO SAY</h2>
+      <p style="color:rgba(250,250,247,.55);max-width:520px;margin:0 auto;">Real experiences from real customers. See why our clients keep coming back.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         ELFSIGHT GOOGLE REVIEWS WIDGET
+         ───────────────────────────────────────────────────────────────
+         HOW TO SET UP (one-time, ~5 minutes):
+         1. Go to https://elfsight.com/google-reviews-widget/ — free plan available
+         2. Sign up, connect your Google Business profile, customize the widget
+         3. Click "Install" — copy the two-line embed code they provide
+         4. Uncomment the two lines below and replace YOUR-APP-ID with your widget ID
+         5. Delete the "Static review cards" block below once the widget is live
+         ═══════════════════════════════════════════════════════════════ -->
+    <!--
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    <div class="elfsight-app-YOUR-APP-ID" data-elfsight-app-lazy></div>
+    -->
+
+    <!-- Static review cards — replace with Elfsight widget when ready -->
+    <div id="review-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;">
+      
+      <div class="card" style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem;text-align:left;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#0A2F82,#3DA5FF);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span class="font-heading" style="font-size:.85rem;color:#fff;">[N1</span>
+            </div>
+            <div>
+              <p class="font-heading" style="font-size:.95rem;letter-spacing:.03em;text-transform:uppercase;color:var(--paper);margin:0;">[REVIEWER NAME 1]</p>
+              <p class="font-mono" style="font-size:.6rem;letter-spacing:.1em;color:rgba(250,250,247,.35);margin:0;">[DATE]</p>
+            </div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908C16.658 14.095 17.64 11.787 17.64 9.2z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+        </div>
+        <span style="color:#f5b912;font-size:1rem;letter-spacing:.1em;">★★★★★</span>
+        <p style="font-size:.875rem;color:rgba(250,250,247,.6);line-height:1.75;margin:0;">[REVIEW TEXT 1]</p>
+      </div>
+      
+      <div class="card" style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem;text-align:left;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#0A2F82,#3DA5FF);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span class="font-heading" style="font-size:.85rem;color:#fff;">[N2</span>
+            </div>
+            <div>
+              <p class="font-heading" style="font-size:.95rem;letter-spacing:.03em;text-transform:uppercase;color:var(--paper);margin:0;">[REVIEWER NAME 2]</p>
+              <p class="font-mono" style="font-size:.6rem;letter-spacing:.1em;color:rgba(250,250,247,.35);margin:0;">[DATE]</p>
+            </div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908C16.658 14.095 17.64 11.787 17.64 9.2z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+        </div>
+        <span style="color:#f5b912;font-size:1rem;letter-spacing:.1em;">★★★★★</span>
+        <p style="font-size:.875rem;color:rgba(250,250,247,.6);line-height:1.75;margin:0;">[REVIEW TEXT 2]</p>
+      </div>
+      
+      <div class="card" style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem;text-align:left;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#0A2F82,#3DA5FF);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span class="font-heading" style="font-size:.85rem;color:#fff;">[N3</span>
+            </div>
+            <div>
+              <p class="font-heading" style="font-size:.95rem;letter-spacing:.03em;text-transform:uppercase;color:var(--paper);margin:0;">[REVIEWER NAME 3]</p>
+              <p class="font-mono" style="font-size:.6rem;letter-spacing:.1em;color:rgba(250,250,247,.35);margin:0;">[DATE]</p>
+            </div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908C16.658 14.095 17.64 11.787 17.64 9.2z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+        </div>
+        <span style="color:#f5b912;font-size:1rem;letter-spacing:.1em;">★★★★★</span>
+        <p style="font-size:.875rem;color:rgba(250,250,247,.6);line-height:1.75;margin:0;">[REVIEW TEXT 3]</p>
+      </div>
+      
+      <div class="card" style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem;text-align:left;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#0A2F82,#3DA5FF);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span class="font-heading" style="font-size:.85rem;color:#fff;">[N4</span>
+            </div>
+            <div>
+              <p class="font-heading" style="font-size:.95rem;letter-spacing:.03em;text-transform:uppercase;color:var(--paper);margin:0;">[REVIEWER NAME 4]</p>
+              <p class="font-mono" style="font-size:.6rem;letter-spacing:.1em;color:rgba(250,250,247,.35);margin:0;">[DATE]</p>
+            </div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908C16.658 14.095 17.64 11.787 17.64 9.2z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+        </div>
+        <span style="color:#f5b912;font-size:1rem;letter-spacing:.1em;">★★★★★</span>
+        <p style="font-size:.875rem;color:rgba(250,250,247,.6);line-height:1.75;margin:0;">[REVIEW TEXT 4]</p>
+      </div>
+      
+      <div class="card" style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem;text-align:left;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#0A2F82,#3DA5FF);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span class="font-heading" style="font-size:.85rem;color:#fff;">[N5</span>
+            </div>
+            <div>
+              <p class="font-heading" style="font-size:.95rem;letter-spacing:.03em;text-transform:uppercase;color:var(--paper);margin:0;">[REVIEWER NAME 5]</p>
+              <p class="font-mono" style="font-size:.6rem;letter-spacing:.1em;color:rgba(250,250,247,.35);margin:0;">[DATE]</p>
+            </div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908C16.658 14.095 17.64 11.787 17.64 9.2z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+        </div>
+        <span style="color:#f5b912;font-size:1rem;letter-spacing:.1em;">★★★★★</span>
+        <p style="font-size:.875rem;color:rgba(250,250,247,.6);line-height:1.75;margin:0;">[REVIEW TEXT 5]</p>
+      </div>
+      
+      <div class="card" style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem;text-align:left;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#0A2F82,#3DA5FF);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span class="font-heading" style="font-size:.85rem;color:#fff;">[N6</span>
+            </div>
+            <div>
+              <p class="font-heading" style="font-size:.95rem;letter-spacing:.03em;text-transform:uppercase;color:var(--paper);margin:0;">[REVIEWER NAME 6]</p>
+              <p class="font-mono" style="font-size:.6rem;letter-spacing:.1em;color:rgba(250,250,247,.35);margin:0;">[DATE]</p>
+            </div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908C16.658 14.095 17.64 11.787 17.64 9.2z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+        </div>
+        <span style="color:#f5b912;font-size:1rem;letter-spacing:.1em;">★★★★★</span>
+        <p style="font-size:.875rem;color:rgba(250,250,247,.6);line-height:1.75;margin:0;">[REVIEW TEXT 6]</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:2rem;">
+      <div style="text-align:center;">
+        <p class="font-display" style="font-size:3rem;line-height:1;margin:0;background:linear-gradient(135deg,#0A2F82,#1252CC,#1B7FE0,#60BFFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">[RATING]</p>
+        <span style="color:#f5b912;font-size:1.1rem;letter-spacing:.05em;">★★★★★</span>
+        <p class="font-mono" style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,247,.35);margin:.25rem 0 0;">[N]+ Google Reviews</p>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary">Contact Us</a>
+        <a href="[GOOGLE REVIEW LINK]" target="_blank" rel="noopener" class="btn btn-ghost">Leave Us a Review</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media (max-width: 900px) { #review-cards { grid-template-columns: repeat(2,1fr) !important; } }
+  @media (max-width: 560px) { #review-cards { grid-template-columns: 1fr !important; } }
+</style>
+
+
+<!-- OUR PROCESS -->
+<section style="padding:5rem 1.5rem;" class="divider">
+  <div style="max-width:1100px;margin:0 auto;">
+    <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">How It Works</p>
+    <h2 class="font-display" style="font-size:clamp(2.5rem,5vw,4rem);line-height:.95;margin:0 0 3rem;">OUR PROCESS IS SIMPLE</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;">
+
+      <div class="card" style="padding:2rem 1.5rem;position:relative;overflow:hidden;">
+        <div class="font-mono" style="font-size:3rem;font-weight:700;color:rgba(18,82,204,.15);position:absolute;top:.5rem;right:1rem;line-height:1;">01</div>
+        <p class="font-mono" style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">Step 1</p>
+        <h3 class="font-heading" style="font-size:1.2rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .5rem;">[STEP 1 LABEL]</h3>
+        <p class="text-body" style="font-size:.85rem;margin:0;">[STEP 1 DESCRIPTION]</p>
+      </div>
+
+      <div class="card" style="padding:2rem 1.5rem;position:relative;overflow:hidden;">
+        <div class="font-mono" style="font-size:3rem;font-weight:700;color:rgba(18,82,204,.15);position:absolute;top:.5rem;right:1rem;line-height:1;">02</div>
+        <p class="font-mono" style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">Step 2</p>
+        <h3 class="font-heading" style="font-size:1.2rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .5rem;">[STEP 2 LABEL]</h3>
+        <p class="text-body" style="font-size:.85rem;margin:0;">[STEP 2 DESCRIPTION]</p>
+      </div>
+
+      <div class="card" style="padding:2rem 1.5rem;position:relative;overflow:hidden;">
+        <div class="font-mono" style="font-size:3rem;font-weight:700;color:rgba(18,82,204,.15);position:absolute;top:.5rem;right:1rem;line-height:1;">03</div>
+        <p class="font-mono" style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">Step 3</p>
+        <h3 class="font-heading" style="font-size:1.2rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .5rem;">[STEP 3 LABEL]</h3>
+        <p class="text-body" style="font-size:.85rem;margin:0;">[STEP 3 DESCRIPTION]</p>
+      </div>
+
+      <div class="card" style="padding:2rem 1.5rem;position:relative;overflow:hidden;">
+        <div class="font-mono" style="font-size:3rem;font-weight:700;color:rgba(18,82,204,.15);position:absolute;top:.5rem;right:1rem;line-height:1;">04</div>
+        <p class="font-mono" style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">Step 4</p>
+        <h3 class="font-heading" style="font-size:1.2rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .5rem;">[STEP 4 LABEL]</h3>
+        <p class="text-body" style="font-size:.85rem;margin:0;">[STEP 4 DESCRIPTION]</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICE AREAS STRIP — area 1 highlighted -->
+<section style="padding:3.5rem 1.5rem;" class="divider">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:1.5rem 3rem;">
+    <p class="font-mono" style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,250,247,.35);white-space:nowrap;flex-shrink:0;">Serving</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem 2rem;">
+      <span class="font-mono" style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);">[AREA 1 NAME]</span>
+      <a href="area-2.html" class="font-mono" style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[AREA 2 NAME]</a>
+      <a href="area-3.html" class="font-mono" style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[AREA 3 NAME]</a>
+      <a href="area-4.html" class="font-mono" style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[AREA 4 NAME]</a>
+      <a href="area-5.html" class="font-mono" style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[AREA 5 NAME]</a>
+      <a href="area-6.html" class="font-mono" style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[AREA 6 NAME]</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA BANNER -->
+<section style="padding:6rem 1.5rem;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 60%, rgba(18,82,204,.12) 0%, transparent 70%);pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;max-width:700px;margin:0 auto;">
+    <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">Ready?</p>
+    <h2 class="font-display" style="font-size:clamp(3rem,7vw,6rem);line-height:.92;margin:0 0 1.5rem;">[CTA HEADLINE]</h2>
+    <p class="text-body" style="max-width:480px;margin:0 auto 2.5rem;">[CTA SUBTEXT]</p>
+    <a href="contact.html" class="btn btn-primary" style="font-size:.85rem;padding:.85rem 2.5rem;">Get Free Quote</a>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer style="background:#0d0d12;border-top:1px solid rgba(250,250,247,.06);padding:4rem 1.5rem 2rem;">
+  <div style="max-width:1280px;margin:0 auto;">
+
+    <div id="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(250,250,247,.06);">
+
+      <div>
+        <img src="logo.png" alt="[BRAND NAME]" style="height:36px;width:auto;margin-bottom:1.25rem;">
+        <p style="font-size:.85rem;color:rgba(250,250,247,.5);line-height:1.8;max-width:280px;">[TAGLINE]</p>
+        <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.5rem;">
+          <a href="tel:[PHONE]" class="font-mono" style="font-size:.75rem;letter-spacing:.1em;color:rgba(250,250,247,.6);text-decoration:none;">[PHONE]</a>
+          <a href="mailto:[EMAIL]" class="font-mono" style="font-size:.75rem;letter-spacing:.1em;color:rgba(250,250,247,.6);text-decoration:none;">[EMAIL]</a>
+        </div>
+        <p class="font-mono" style="font-size:.7rem;letter-spacing:.1em;color:rgba(250,250,247,.35);margin-top:1rem;">[HOURS]</p>
+      </div>
+
+      <div>
+        <p class="font-mono" style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,250,247,.35);margin-bottom:1rem;">Services</p>
+        <div style="display:flex;flex-direction:column;gap:.65rem;">
+          <a href="service-1.html" style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[SERVICE 1 NAME]</a>
+          <a href="service-2.html" style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[SERVICE 2 NAME]</a>
+          <a href="service-3.html" style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[SERVICE 3 NAME]</a>
+          <a href="service-4.html" style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[SERVICE 4 NAME]</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="font-mono" style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,250,247,.35);margin-bottom:1rem;">Service Areas</p>
+        <div style="display:flex;flex-direction:column;gap:.65rem;">
+          <a href="area-1.html" style="font-size:.85rem;color:var(--paper);text-decoration:none;">[AREA 1 NAME]</a>
+          <a href="area-2.html" style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[AREA 2 NAME]</a>
+          <a href="area-3.html" style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[AREA 3 NAME]</a>
+          <a href="area-4.html" style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[AREA 4 NAME]</a>
+          <a href="area-5.html" style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[AREA 5 NAME]</a>
+          <a href="area-6.html" style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[AREA 6 NAME]</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="font-mono" style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,250,247,.35);margin-bottom:1rem;">Company</p>
+        <div style="display:flex;flex-direction:column;gap:.65rem;">
+          <a href="gallery.html"  style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">Our Work</a>
+          <a href="blog.html"     style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">Blog</a>
+          <a href="contact.html"  style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">Contact</a>
+          <a href="terms.html" style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">Terms of Service</a>
+          <a href="privacy.html" style="font-size:.85rem;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">Privacy Policy</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="padding-top:1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <p class="font-mono" style="font-size:.65rem;letter-spacing:.1em;color:rgba(250,250,247,.25);">
+        &copy; <span id="footer-year"></span> [BRAND NAME]. All rights reserved.
+      </p>
+      <a href="contact.html" class="btn btn-ghost" style="font-size:.65rem;padding:.5rem 1.1rem;">Get Free Quote</a>
+    </div>
+
+  </div>
+</footer>
+
+
+<script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const drop = item.querySelector('.nav-dropdown');
+    if (!drop) return;
+    let timer;
+    const show = () => { clearTimeout(timer); drop.style.display = 'block'; };
+    const hide = () => { timer = setTimeout(() => { drop.style.display = ''; }, 150); };
+    item.addEventListener('mouseenter', show);
+    item.addEventListener('mouseleave', hide);
+    drop.addEventListener('mouseenter', show);
+    drop.addEventListener('mouseleave', hide);
+  });
+
+  /* Responsive intro grid — stack on mobile */
+  function checkIntroGrid() {
+    const g = document.getElementById('intro-grid');
+    if (!g) return;
+    g.style.gridTemplateColumns = window.innerWidth < 768 ? '1fr' : '1fr 1fr';
+    g.style.gap = window.innerWidth < 768 ? '3rem' : '5rem';
+  }
+  checkIntroGrid();
+  window.addEventListener('resize', checkIntroGrid);
+</script>
+
+
+<!-- COOKIE / SMS CONSENT BANNER -->
+<div id="consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(8,13,24,.97);border-top:1px solid rgba(250,250,247,.08);backdrop-filter:blur(12px);padding:1.1rem 1.5rem;">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+    <p style="font-family:'Inter',sans-serif;font-size:.8rem;color:rgba(250,250,247,.55);line-height:1.6;margin:0;max-width:700px;">
+      We use cookies to improve your experience and may send SMS updates if you opt in. By continuing, you agree to our
+      <a href="privacy.html" style="color:#60BFFF;text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a> and
+      <a href="terms.html"   style="color:#60BFFF;text-decoration:underline;text-underline-offset:2px;">Terms &amp; Conditions</a>.
+      Reply STOP to any text to unsubscribe.
+    </p>
+    <div style="display:flex;gap:.75rem;flex-shrink:0;">
+      <button onclick="handleConsent('declined')" style="font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:transparent;color:rgba(250,250,247,.4);border:1px solid rgba(250,250,247,.15);border-radius:4px;padding:.5rem 1rem;cursor:pointer;transition:border-color .15s,color .15s;" onmouseover="this.style.borderColor='rgba(250,250,247,.4)';this.style.color='rgba(250,250,247,.7)'" onmouseout="this.style.borderColor='rgba(250,250,247,.15)';this.style.color='rgba(250,250,247,.4)'">Decline</button>
+      <button onclick="handleConsent('accepted')" style="font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:#1252CC;color:#FAFAF7;border:none;border-radius:4px;padding:.5rem 1.1rem;cursor:pointer;transition:opacity .15s;" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    if (!localStorage.getItem('site_consent')) {
+      document.getElementById('consent-banner').style.display = 'block';
+    }
+    window.handleConsent = function(choice) {
+      localStorage.setItem('site_consent', choice);
+      document.getElementById('consent-banner').style.display = 'none';
+    };
+  })();
+</script>
+</body>
+</html>
