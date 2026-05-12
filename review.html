@@ -20,7 +20,7 @@
       --signal: #1252CC;
       --logo-a: #0A2F82;
       --logo-b: #3DA5FF;
-      --fire:   linear-gradient(135deg, #0A2F82, #1252CC, #1B7FE0, #60BFFF);
+      --fire:   var(--fire);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,7 +51,7 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(18,82,204,.13) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 60% at 50% 40%, color-mix(in srgb, var(--signal) 13%, transparent) 0%, transparent 65%),
         radial-gradient(ellipse 40% 30% at 80% 80%, rgba(96,191,255,.05) 0%, transparent 60%);
       pointer-events: none;
       z-index: 0;
@@ -239,7 +239,7 @@
     }
 
     .field::placeholder { color: rgba(250,250,247,.25); }
-    .field:focus { border-color: rgba(18,82,204,.7); }
+    .field:focus { border-color: color-mix(in srgb, var(--signal) 70%, transparent); }
 
     textarea.field {
       resize: vertical;
@@ -264,10 +264,10 @@
       text-transform: uppercase;
       cursor: pointer;
       transition: transform .15s ease, box-shadow .15s ease;
-      box-shadow: 0 4px 20px rgba(18,82,204,.35);
+      box-shadow: 0 4px 20px color-mix(in srgb, var(--signal) 35%, transparent);
     }
 
-    .submit-btn:hover  { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(18,82,204,.5); }
+    .submit-btn:hover  { transform: translateY(-2px); box-shadow: 0 8px 28px color-mix(in srgb, var(--signal) 50%, transparent); }
     .submit-btn:active { transform: translateY(0); }
     .submit-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
     .submit-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
@@ -288,14 +288,14 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: rgba(18,82,204,.15);
-      border: 1px solid rgba(18,82,204,.3);
+      background: color-mix(in srgb, var(--signal) 15%, transparent);
+      border: 1px solid color-mix(in srgb, var(--signal) 30%, transparent);
       animation: pulseRing 1.6s cubic-bezier(.4,0,.6,1) infinite;
     }
 
     @keyframes pulseRing {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(18,82,204,.25); }
-      50%       { box-shadow: 0 0 0 12px rgba(18,82,204,0); }
+      0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 25%, transparent); }
+      50%       { box-shadow: 0 0 0 12px color-mix(in srgb, var(--signal) 0%, transparent); }
     }
 
     /* Progress bar */
@@ -324,8 +324,8 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: rgba(18,82,204,.15);
-      border: 1px solid rgba(18,82,204,.3);
+      background: color-mix(in srgb, var(--signal) 15%, transparent);
+      border: 1px solid color-mix(in srgb, var(--signal) 30%, transparent);
     }
 
     /* Section animations */

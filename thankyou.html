@@ -26,7 +26,7 @@
       --signal: #1252CC;
       --logo-a: #0A2F82;
       --logo-b: #3DA5FF;
-      --fire:   linear-gradient(135deg, #0A2F82, #1252CC, #1B7FE0, #60BFFF);
+      --fire:   var(--fire);
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -91,7 +91,7 @@
 <main style="flex:1;display:flex;align-items:center;justify-content:center;padding:4rem 1.5rem;position:relative;overflow:hidden;">
 
   <!-- Ambient background -->
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(18,82,204,.1) 0%, transparent 65%);pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%, color-mix(in srgb, var(--signal) 10%, transparent) 0%, transparent 65%);pointer-events:none;"></div>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 40% 40% at 80% 20%, rgba(96,191,255,.04) 0%, transparent 60%);pointer-events:none;"></div>
   <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.03;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
     <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
@@ -103,16 +103,16 @@
     <!-- Animated check -->
     <div style="position:relative;width:96px;height:96px;margin:0 auto 2.5rem;">
       <svg class="pulse-ring" style="position:absolute;inset:-12px;width:120px;height:120px;" viewBox="0 0 120 120" fill="none">
-        <circle cx="60" cy="60" r="54" fill="rgba(18,82,204,.15)"/>
+        <circle cx="60" cy="60" r="54" fill="color-mix(in srgb, var(--signal) 15%, transparent)"/>
       </svg>
       <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle class="check-circle" cx="48" cy="48" r="44" stroke="url(#grad)" stroke-width="3" fill="none" stroke-linecap="round"/>
         <path class="check-mark" d="M28 49l13 13 27-27" stroke="var(--paper)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         <defs>
           <linearGradient id="grad" x1="4" y1="4" x2="92" y2="92" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#0A2F82"/>
-            <stop offset="50%" stop-color="#1252CC"/>
-            <stop offset="100%" stop-color="#60BFFF"/>
+            <stop offset="0%" stop-color="var(--logo-a)"/>
+            <stop offset="50%" stop-color="var(--signal)"/>
+            <stop offset="100%" stop-color="var(--gold)"/>
           </linearGradient>
         </defs>
       </svg>
@@ -125,7 +125,7 @@
     </p>
 
     <!-- Call CTA -->
-    <a href="tel:[PHONE]" style="display:inline-flex;align-items:center;gap:.6rem;background:rgba(250,250,247,.04);border:1px solid rgba(250,250,247,.1);border-radius:8px;padding:.9rem 1.75rem;margin-bottom:2.5rem;text-decoration:none;transition:border-color .15s,background .15s;" onmouseover="this.style.borderColor='rgba(18,82,204,.5)';this.style.background='rgba(18,82,204,.08)'" onmouseout="this.style.borderColor='rgba(250,250,247,.1)';this.style.background='rgba(250,250,247,.04)'">
+    <a href="tel:[PHONE]" style="display:inline-flex;align-items:center;gap:.6rem;background:rgba(250,250,247,.04);border:1px solid rgba(250,250,247,.1);border-radius:8px;padding:.9rem 1.75rem;margin-bottom:2.5rem;text-decoration:none;transition:border-color .15s,background .15s;" onmouseover="this.style.borderColor='color-mix(in srgb, var(--signal) 50%, transparent)';this.style.background='color-mix(in srgb, var(--signal) 8%, transparent)'" onmouseout="this.style.borderColor='rgba(250,250,247,.1)';this.style.background='rgba(250,250,247,.04)'">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 10.67c-1.06 0-2.09-.17-3.05-.48a1 1 0 0 0-1.02.23l-1.5 1.5a10.83 10.83 0 0 1-4.35-4.35l1.5-1.5a1 1 0 0 0 .23-1.02A9.48 9.48 0 0 1 5.33 2a1 1 0 0 0-1-.99H2a1 1 0 0 0-1 1A13 13 0 0 0 14 15a1 1 0 0 0 1-1v-2.33a1 1 0 0 0-.99-1z" fill="var(--signal)"/></svg>
       <span class="font-mono" style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);">[PHONE]</span>
     </a>

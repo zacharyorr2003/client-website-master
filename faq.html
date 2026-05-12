@@ -22,7 +22,7 @@
       --signal: #1252CC;
       --logo-a: #0A2F82;
       --logo-b: #3DA5FF;
-      --fire:   linear-gradient(135deg, #0A2F82, #1252CC, #1B7FE0, #60BFFF);
+      --fire:   var(--fire);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -104,7 +104,7 @@
       transition: border-color .2s ease;
     }
     .faq-item.open {
-      border-color: rgba(18,82,204,.35);
+      border-color: color-mix(in srgb, var(--signal) 35%, transparent);
     }
     .faq-item.open .faq-trigger-text {
       background: var(--fire);
@@ -130,11 +130,11 @@
       white-space: nowrap;
     }
     .cat-tab:hover {
-      border-color: rgba(18,82,204,.5);
+      border-color: color-mix(in srgb, var(--signal) 50%, transparent);
       color: var(--paper);
     }
     .cat-tab.active {
-      background: rgba(18,82,204,.18);
+      background: color-mix(in srgb, var(--signal) 18%, transparent);
       border-color: var(--signal);
       color: var(--paper);
     }
@@ -185,10 +185,10 @@
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="opacity:.5;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:220px;background:#141418;border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
-          <a href="service-1.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 1 NAME]</a>
-          <a href="service-2.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 2 NAME]</a>
-          <a href="service-3.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 3 NAME]</a>
-          <a href="service-4.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 4 NAME]</a>
+          <a href="service-1.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='color-mix(in srgb, var(--signal) 12%, transparent)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 1 NAME]</a>
+          <a href="service-2.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='color-mix(in srgb, var(--signal) 12%, transparent)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 2 NAME]</a>
+          <a href="service-3.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='color-mix(in srgb, var(--signal) 12%, transparent)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 3 NAME]</a>
+          <a href="service-4.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='color-mix(in srgb, var(--signal) 12%, transparent)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 4 NAME]</a>
         </div>
       </div>
 
@@ -206,12 +206,12 @@
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="opacity:.5;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:200px;background:#141418;border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
-          <a href="area-1.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 1 NAME]</a>
-          <a href="area-2.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 2 NAME]</a>
-          <a href="area-3.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 3 NAME]</a>
-          <a href="area-4.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 4 NAME]</a>
-          <a href="area-5.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 5 NAME]</a>
-          <a href="area-6.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 6 NAME]</a>
+          <a href="area-1.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='color-mix(in srgb, var(--signal) 12%, transparent)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 1 NAME]</a>
+          <a href="area-2.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='color-mix(in srgb, var(--signal) 12%, transparent)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 2 NAME]</a>
+          <a href="area-3.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='color-mix(in srgb, var(--signal) 12%, transparent)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 3 NAME]</a>
+          <a href="area-4.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='color-mix(in srgb, var(--signal) 12%, transparent)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 4 NAME]</a>
+          <a href="area-5.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='color-mix(in srgb, var(--signal) 12%, transparent)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 5 NAME]</a>
+          <a href="area-6.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='color-mix(in srgb, var(--signal) 12%, transparent)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 6 NAME]</a>
         </div>
       </div>
 
@@ -272,7 +272,7 @@
   <!-- Ambient glow -->
   <div style="position:absolute;inset:0;pointer-events:none;
               background:
-                radial-gradient(ellipse 60% 80% at 30% 50%, rgba(18,82,204,.07) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 30% 50%, color-mix(in srgb, var(--signal) 7%, transparent) 0%, transparent 60%),
                 radial-gradient(ellipse 40% 50% at 80% 20%, rgba(61,165,255,.05) 0%, transparent 50%);"></div>
 
   <!-- SVG grain -->
@@ -436,7 +436,7 @@
     </div>
 
     <!-- Still have questions? inline CTA -->
-    <div style="margin-top:4rem;padding:2.5rem;background:rgba(18,82,204,.07);border:1px solid rgba(18,82,204,.2);border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+    <div style="margin-top:4rem;padding:2.5rem;background:color-mix(in srgb, var(--signal) 7%, transparent);border:1px solid color-mix(in srgb, var(--signal) 20%, transparent);border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
       <div>
         <p class="font-mono" style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.5rem;">Still have questions?</p>
         <p class="font-heading" style="font-size:1.4rem;letter-spacing:.03em;text-transform:uppercase;color:var(--paper);margin:0 0 .35rem;">We're here to help.</p>
@@ -474,7 +474,7 @@
      CTA BANNER
      ============================================================ -->
 <section style="padding:6rem 1.5rem;text-align:center;position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 60%, rgba(18,82,204,.12) 0%, transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 60%, color-mix(in srgb, var(--signal) 12%, transparent) 0%, transparent 70%);pointer-events:none;"></div>
   <div style="position:relative;z-index:1;max-width:700px;margin:0 auto;">
     <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">Ready?</p>
     <h2 class="font-display" style="font-size:clamp(3rem,7vw,6rem);line-height:.92;margin:0 0 1.5rem;">[CTA HEADLINE]</h2>
@@ -606,13 +606,13 @@
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
     <p style="font-family:'Inter',sans-serif;font-size:.8rem;color:rgba(250,250,247,.55);line-height:1.6;margin:0;max-width:700px;">
       We use cookies to improve your experience and may send SMS updates if you opt in. By continuing, you agree to our
-      <a href="privacy.html" style="color:#60BFFF;text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a> and
-      <a href="terms.html"   style="color:#60BFFF;text-decoration:underline;text-underline-offset:2px;">Terms &amp; Conditions</a>.
+      <a href="privacy.html" style="color:var(--gold);text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a> and
+      <a href="terms.html"   style="color:var(--gold);text-decoration:underline;text-underline-offset:2px;">Terms &amp; Conditions</a>.
       Reply STOP to any text to unsubscribe.
     </p>
     <div style="display:flex;gap:.75rem;flex-shrink:0;">
       <button onclick="handleConsent('declined')" style="font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:transparent;color:rgba(250,250,247,.4);border:1px solid rgba(250,250,247,.15);border-radius:4px;padding:.5rem 1rem;cursor:pointer;transition:border-color .15s,color .15s;" onmouseover="this.style.borderColor='rgba(250,250,247,.4)';this.style.color='rgba(250,250,247,.7)'" onmouseout="this.style.borderColor='rgba(250,250,247,.15)';this.style.color='rgba(250,250,247,.4)'">Decline</button>
-      <button onclick="handleConsent('accepted')" style="font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:#1252CC;color:#FAFAF7;border:none;border-radius:4px;padding:.5rem 1.1rem;cursor:pointer;transition:opacity .15s;" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">Accept</button>
+      <button onclick="handleConsent('accepted')" style="font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:var(--signal);color:#FAFAF7;border:none;border-radius:4px;padding:.5rem 1.1rem;cursor:pointer;transition:opacity .15s;" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">Accept</button>
     </div>
   </div>
 </div>
