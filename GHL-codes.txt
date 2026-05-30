@@ -1,0 +1,8 @@
+GHL CODES — Minty Electrician
+==============================
+
+WEBHOOK URL (Hero form + Modal form):
+https://services.leadconnectorhq.com/hooks/HpVkjQyf3DMpNsxRT1dc/webhook-trigger/2c32530f-f4c9-467c-83dd-ae8469f4c3d5
+
+CHAT WIDGET SCRIPT:
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69f2b63a4f773c681b0c2fbc"></script>

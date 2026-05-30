@@ -1,0 +1,503 @@
+================================================================
+A2P 10DLC COMPLIANCE GUIDE
+For use with HighLevel (GoHighLevel) A2P Registration
+================================================================
+
+⚠️  HOW TO USE THIS GUIDE
+This guide is written so that any person or AI assistant can
+complete a full A2P 10DLC registration for any business from
+start to finish without errors. All company and contact
+information must be pulled from the CLIENT INTAKE FORM before
+filling out anything in HighLevel. Replace every [placeholder]
+with the matching field from the intake form. Follow every
+section in order. Links must be live and publicly accessible
+before submitting.
+
+PLACEHOLDERS USED IN THIS GUIDE:
+  [Business Name]     — Legal company name (e.g. "Acme LLC")
+  [EIN]               — Employer Identification Number
+  [owner email]       — Owner/primary contact email
+  [support email]     — Public-facing support email
+  [support phone]     — Public-facing support phone number
+  [website URL]       — Full website URL with https://
+  [opt-in form URL]   — Direct URL to the opt-in/contact page
+  [privacy policy URL]— Direct URL to the privacy policy page
+  [terms URL]         — Direct URL to the terms of service page
+  [business address]  — Full street address, city, state, zip
+  [rep name]          — Authorized representative full name
+  [rep title]         — Authorized representative job title
+  [governing state]   — State whose law governs the agreement
+
+
+================================================================
+SECTION 1 — BUSINESS INFORMATION
+⚠️  Pull ALL fields in this section directly from the
+    CLIENT INTAKE FORM before filling out anything in
+    HighLevel. Do not guess or assume any values.
+================================================================
+
+Legal Company Name:      → CLIENT INTAKE FORM: "Legal Business Name"
+Business Type:           → CLIENT INTAKE FORM: "Business Entity Type"
+EIN:                     → CLIENT INTAKE FORM: "EIN / Tax ID"
+Business Email:          → CLIENT INTAKE FORM: "Owner Email"
+Support Email:           → CLIENT INTAKE FORM: "Support / Public Email"
+Support Phone:           → CLIENT INTAKE FORM: "Support / Public Phone"
+Website URL:             → CLIENT INTAKE FORM: "Website URL"
+Business Industry:       → CLIENT INTAKE FORM: "Industry"
+Region of Operations:    USA_AND_CANADA
+
+Business Address:
+  Street:   → CLIENT INTAKE FORM: "Business Street Address"
+  City:     → CLIENT INTAKE FORM: "City"
+  State:    → CLIENT INTAKE FORM: "State"
+  Zip:      → CLIENT INTAKE FORM: "Zip Code"
+  Country:  → CLIENT INTAKE FORM: "Country"
+
+Authorized Representative:
+  Name:     → CLIENT INTAKE FORM: "Owner / Authorized Rep Full Name"
+  Title:    → CLIENT INTAKE FORM: "Job Title"
+  Email:    → CLIENT INTAKE FORM: "Owner Email"
+  Phone:    → CLIENT INTAKE FORM: "Owner / Rep Phone Number"
+
+
+================================================================
+SECTION 2 — THE THREE REQUIRED PAGES
+⚠️  These three pages MUST exist and be publicly accessible
+    before submitting A2P registration. This is the most
+    critical part of approval. Missing or incomplete pages
+    are the #1 reason campaigns are rejected.
+================================================================
+
+REQUIRED PAGE 1: OPT-IN FORM
+URL: [opt-in form URL]
+
+REQUIRED PAGE 2: PRIVACY POLICY
+URL: [privacy policy URL]
+
+REQUIRED PAGE 3: TERMS OF SERVICE
+URL: [terms URL]
+
+----------------------------------------------------------------
+WHY THESE THREE PAGES MATTER
+----------------------------------------------------------------
+The A2P compliance scanner crawls the Opt-In Form URL and
+verifies that:
+  1. The opt-in form is visible in HTML (not hidden in a modal)
+  2. A Privacy Policy link is present and accessible
+  3. A Terms of Service link is present and accessible
+  4. Consent checkboxes are unchecked by default
+  5. Required disclaimer language is present
+
+All three pages must pass before your campaign is approved.
+
+
+----------------------------------------------------------------
+PAGE 1 REQUIREMENTS — OPT-IN FORM
+----------------------------------------------------------------
+
+The form must include TWO SEPARATE optional checkboxes —
+one for Customer Care, one for Marketing. Neither can be
+pre-checked. Neither can be required. The user must be able
+to submit the form without checking either box.
+
+CHECKBOX 1 — Customer Care (Transactional) — EXACT TEXT:
+  "By providing a telephone number, clicking this button, and
+  submitting the form, you are consenting to be contacted by
+  SMS text message from [Business Name], regarding Customer
+  Care (transactional). Message frequency may vary. Up to 4
+  msgs/month. Message & data rates apply. Reply STOP to
+  unsubscribe from further messaging from [Business Name].
+  Reply HELP for more information. See our Privacy Policy
+  (containing our SMS Terms) at the bottom of the page for
+  more information."
+
+CHECKBOX 2 — Marketing (Promotional) — EXACT TEXT:
+  "By providing a telephone number, clicking this button, and
+  submitting the form, you are consenting to be contacted by
+  SMS text message from [Business Name], regarding new offers
+  (promotional/marketing). Message frequency may vary. Up to
+  4 msgs/month. Message & data rates apply. Reply STOP to
+  unsubscribe from further messaging from [Business Name].
+  Reply HELP for more information. See our Privacy Policy
+  (containing our SMS Terms) at the bottom of the page for
+  more information."
+
+FORM DISCLAIMER — Must appear below the checkboxes:
+  "Consent is provided exclusively for [Business Name] to
+  contact the user based on the selection, not any other
+  third parties mentioned on the site. SMS opt-in data is not
+  shared/sold to third parties for promotional/marketing
+  purposes. SMS consent is not required as a condition of
+  purchase. You must be 18 or older to consent. Msg & data
+  rates may apply. Reply STOP to cancel, HELP for support."
+
+FOOTER LINKS — Must appear at the bottom of the page:
+  - Link to Privacy Policy (opens in new tab)
+  - Link to Terms & Conditions (opens in new tab)
+
+FORM CHECKLIST:
+  [ ] Form is visible in raw HTML (NOT inside a modal/display:none)
+  [ ] Business name clearly displayed in checkbox text and disclaimer
+  [ ] Two separate checkboxes (Customer Care / Marketing)
+  [ ] Checkbox for explicit consent present on each SMS type
+  [ ] Neither checkbox is pre-selected
+  [ ] Neither checkbox is marked as required
+  [ ] Checkbox 1 label uses exact template text above
+  [ ] Checkbox 2 label uses exact template text above
+  [ ] Message type disclosed in checkbox text (Customer Care / Marketing)
+  [ ] Message frequency disclosed in checkbox text ("Up to 4 msgs/month")
+  [ ] Opt-out instructions in checkbox text ("Reply STOP to unsubscribe")
+  [ ] Message & data rates disclosure in checkbox text
+  [ ] Disclaimer paragraph appears below checkboxes
+  [ ] Disclaimer includes "not required as a condition of purchase"
+  [ ] Disclaimer includes "18 or older to consent"
+  [ ] Disclaimer includes "Msg & data rates may apply"
+  [ ] Disclaimer includes "Reply STOP to cancel"
+  [ ] Disclaimer includes "Reply HELP for support"
+  [ ] Disclaimer includes non-sharing statement
+  [ ] Privacy Policy link in footer (opens in new tab)
+  [ ] Terms & Conditions link in footer (opens in new tab)
+  [ ] Form submits without requiring either box to be checked
+
+
+----------------------------------------------------------------
+PAGE 2 REQUIREMENTS — PRIVACY POLICY
+----------------------------------------------------------------
+
+The Privacy Policy must include ALL of the following sections.
+Missing any single item can cause the compliance scan to fail.
+
+REQUIRED SECTIONS:
+
+1. WHAT INFORMATION IS COLLECTED
+   - List all data types: name, email, phone number, etc.
+
+2. HOW USER DATA IS USED
+   - List all purposes data is used for
+
+3. SMS OPT-IN DETAILS (Critical — scanner checks for this)
+   - Describe the two opt-in types (Customer Care / Marketing)
+   - State message frequency for each ("up to 4 msgs/month")
+   - State that opting in is voluntary and not required
+   - State age restriction: must be 18 or older to consent
+   - Include STOP keyword instruction
+   - Include HELP keyword instruction
+   - Include "Msg & data rates may apply"
+
+4. COOKIE & TRACKING PRACTICES
+   - Describe types of cookies used (essential, analytics,
+     marketing)
+   - Explain how users can manage cookie preferences
+
+5. DATA SECURITY AND HANDLING
+   - Explain how user data is protected
+
+6. USER RIGHTS
+   - Right to access their data
+   - Right to correct inaccurate data
+   - Right to request deletion
+   - Right to unsubscribe from SMS (STOP) and email
+   - Contact email for rights requests
+
+7. STRICT PROHIBITION CLAUSE
+   Must state that [Business Name] is NOT affiliated with
+   any lead network or third-party lead aggregator, and does
+   not buy, sell, or broker leads.
+
+8. MOBILE INFO SHARING STATEMENT — EXACT LANGUAGE REQUIRED:
+   "No mobile information will be shared with third parties
+   or affiliates for marketing or promotional purposes."
+
+   "All the above categories exclude text messaging originator
+   opt-in data and consent; this information will not be
+   shared with any third parties under any circumstances."
+
+9. CROSS-LINK TO TERMS & CONDITIONS
+   - Must include a clickable link to the Terms of Service page
+
+PRIVACY POLICY CHECKLIST:
+  [ ] What information is collected
+  [ ] How user data is used
+  [ ] SMS opt-in details (types, frequency, STOP/HELP, 18+)
+  [ ] Cookie & tracking practices
+  [ ] Data security and handling
+  [ ] User rights (access, correct, delete, unsubscribe)
+  [ ] Strict prohibition clause (no lead buying/selling)
+  [ ] Mobile info sharing statement — exact language above
+  [ ] Cross-link to Terms & Conditions
+
+
+----------------------------------------------------------------
+PAGE 3 REQUIREMENTS — TERMS OF SERVICE
+----------------------------------------------------------------
+
+The Terms of Service must include ALL of the following clauses.
+
+REQUIRED CLAUSES:
+
+1. BUSINESS DESCRIPTION
+   - State [Business Name] by name
+   - Briefly describe the business and services offered
+
+2. DESCRIPTION OF SMS USE CASES
+   - Explicitly list the SMS use cases: Customer Care
+     (transactional) and Marketing (promotional)
+   - Describe what each type of message may include
+     (e.g., appointment reminders, offers, promotions)
+
+3. MESSAGING CONSENT LANGUAGE
+   - Must state that submitting the form does NOT equal consent
+   - Consent must come from explicitly checking the checkbox
+   - Example: "Simply providing your phone number or submitting
+     a form does not constitute consent to receive SMS messages
+     from [Business Name]."
+
+4. MESSAGE TYPES & FREQUENCY
+   - List all message types (Customer Care / Marketing)
+   - Disclose frequency: "Message frequency varies. You may
+     receive up to 4 messages per month."
+
+5. OPT-OUT INSTRUCTIONS
+   - "Reply STOP to any message to unsubscribe."
+   - Confirm that a one-time confirmation will be sent
+
+6. CUSTOMER SUPPORT CONTACT
+   - "Reply HELP for assistance."
+   - Include support email: [support email]
+   - Include support phone: [support phone]
+
+7. MESSAGE & DATA RATES DISCLOSURE
+   - "Message and data rates may apply."
+
+8. CARRIER LIABILITY DISCLAIMER
+   - "Wireless carriers are not liable for delayed or
+     undelivered messages."
+
+9. AGE RESTRICTION
+   - "You must be at least 18 years of age to consent to
+     receive SMS messages from [Business Name]."
+
+10. GOVERNING LAW
+    - State that [governing state] law governs the agreement
+
+11. CROSS-LINK TO PRIVACY POLICY
+    - Must include a clickable link to the Privacy Policy page
+
+TERMS OF SERVICE CHECKLIST:
+  [ ] Business name and description
+  [ ] Description of SMS use cases (Customer Care / Marketing)
+  [ ] Messaging consent: form submission ≠ SMS consent
+  [ ] Message types listed (Customer Care / Marketing)
+  [ ] Message frequency disclosed ("up to 4 msgs/month")
+  [ ] Opt-out instructions (Reply STOP)
+  [ ] Customer support contact (HELP keyword + email + phone)
+  [ ] Message & data rate disclosure
+  [ ] Carrier liability disclaimer
+  [ ] Age restriction (18+)
+  [ ] Governing law ([governing state])
+  [ ] Cross-link to Privacy Policy
+
+
+================================================================
+SECTION 3 — CAMPAIGN REGISTRATION DETAILS
+(Fill in [placeholders] with client info before submitting)
+================================================================
+
+Brand Plan:   Standard
+Use Case:     MARKETING
+
+--- CAMPAIGN DESCRIPTION TEMPLATE ---
+[Business Name] sends promotional and marketing messages to
+users who explicitly consent via a separate, optional
+marketing checkbox within the website [website URL] chat
+widget. Messages may include special offers, discounts, event
+promotions, and service announcements. Marketing messages are
+only sent after express written consent is provided and are
+not combined with transactional consent.
+--- END CAMPAIGN DESCRIPTION ---
+
+--- CTA / OPT-IN MESSAGE FLOW TEMPLATE ---
+Clients will be able to sign-up to receive SMS notifications
+by checking their preference at [opt-in form URL] where
+they'll see a form to fill out their information, and can
+click a specific box for Customer Care and/or Marketing.
+The text reads:
+
+[ ] By providing a telephone number, clicking this button, and
+submitting the form, you are consenting to be contacted by SMS
+text message from [Business Name], regarding Customer Care
+(transactional). Message frequency may vary. Up to 4
+msgs/month. Message & data rates apply. Reply STOP to
+unsubscribe from further messaging from [Business Name].
+Reply HELP for more information. See our Privacy Policy
+(containing our SMS Terms) at the bottom of the page for more
+information.
+
+[ ] By providing a telephone number, clicking this button, and
+submitting the form, you are consenting to be contacted by SMS
+text message from [Business Name], regarding new offers
+(promotional/marketing). Message frequency may vary. Up to 4
+msgs/month. Message & data rates apply. Reply STOP to
+unsubscribe from further messaging from [Business Name].
+Reply HELP for more information. See our Privacy Policy
+(containing our SMS Terms) at the bottom of the page for more
+information.
+
+Consent is provided exclusively for [Business Name] to
+contact the user based on the selection, not any other third
+parties mentioned on the site. SMS opt-in data is not
+shared/sold to third parties for promotional/marketing
+purposes.
+--- END CTA / OPT-IN MESSAGE FLOW ---
+
+--- SAMPLE MESSAGE 1 TEMPLATE ---
+Hi! This is [Business Name]. We're excited to share a new
+promotion available for a limited time. Reply STOP to
+unsubscribe. Message & data rates may apply.
+--- END SAMPLE MESSAGE 1 ---
+
+--- SAMPLE MESSAGE 2 TEMPLATE ---
+Hello from [Business Name]. Don't miss our latest offers and
+updates. Reply STOP to unsubscribe. Message frequency varies.
+Message & data rates may apply.
+--- END SAMPLE MESSAGE 2 ---
+
+--- OPT-IN CONFIRMATION MESSAGE TEMPLATE ---
+You've opted-in to receive messages from [Business Name].
+You may get customer care and/or promotional messages. Msg
+frequency varies. Msg & data rates may apply. Consent is not
+a condition of purchase. Reply STOP to unsubscribe, HELP for
+help.
+--- END OPT-IN CONFIRMATION MESSAGE ---
+
+Campaign Attributes:
+  Subscriber Opt-In:    Yes
+  Subscriber Opt-Out:   Yes
+  Subscriber Help:      Yes
+  Number Pooling:       No
+  Embedded Link:        Yes
+  Embedded Phone:       No
+  Age Gated:            No
+  Affiliate Marketing:  No
+
+Opt-In Method:     Website Form
+Opt-In Form URL:   [opt-in form URL]
+Opt-In Image URL:  [opt-in form URL]
+
+
+================================================================
+SECTION 4 — HIGHLEVEL STEP-BY-STEP REGISTRATION
+================================================================
+
+STEP 1 — VERIFY ALL THREE PAGES ARE LIVE
+  Before touching HighLevel, open each URL in an incognito
+  browser window and confirm they load publicly:
+
+  [ ] [opt-in form URL]
+      → Opt-in form visible, two checkboxes unchecked,
+        Privacy Policy and Terms links in footer
+  [ ] [privacy policy URL]
+      → All required sections present, mobile info sharing
+        statement present, link to Terms
+  [ ] [terms URL]
+      → All required clauses present, link to Privacy Policy
+
+  ❌ Do NOT submit registration until all three pages pass.
+
+STEP 2 — BRAND REGISTRATION
+  GHL → Settings → Phone Numbers → A2P Registration
+  Enter the following using values from the CLIENT INTAKE FORM
+  (see Section 1 for exact field names):
+    - Legal Company Name: → intake form "Legal Business Name"
+    - Business Type:      → intake form "Business Entity Type"
+    - EIN:                → intake form "EIN / Tax ID"
+    - Business Address:   → intake form address fields
+    - Website:            → intake form "Website URL"
+    - Support Email:      → intake form "Support / Public Email"
+    - Support Phone:      → intake form "Support / Public Phone"
+  Submit brand registration and wait for approval.
+
+STEP 3 — CAMPAIGN REGISTRATION
+  After brand is approved:
+    - Campaign Type: Customer Care + Marketing
+    - Fill in and paste Campaign Description from Section 3
+    - Opt-In Method: Website Form
+    - Opt-In Form URL: [opt-in form URL]
+    - Fill in and paste CTA / Message Flow from Section 3
+    - Fill in and paste Sample Messages from Section 3
+    - Set attributes to match the list in Section 3
+  Submit campaign registration.
+
+STEP 4 — POST-SUBMISSION CHECKS
+  ❌ Do not remove STOP / HELP language from any page
+  ❌ Do not change the opt-in form wording after submission
+  ✅ All three pages must remain live throughout review
+  ✅ Business address must match what is on file with the IRS
+  ✅ Approval typically takes 2–4 business days
+
+
+================================================================
+SECTION 5 — MASTER PRE-SUBMISSION CHECKLIST
+Run through this entire checklist before submitting.
+================================================================
+
+OPT-IN FORM
+  [ ] Form is visible in raw HTML (not hidden in a modal)
+  [ ] Business name clearly displayed in checkbox text and disclaimer
+  [ ] Two separate checkboxes (Customer Care / Marketing)
+  [ ] Checkbox for explicit consent present on each SMS type
+  [ ] Neither checkbox is pre-selected
+  [ ] Neither checkbox is a required field
+  [ ] Checkbox 1 label uses exact template text from Section 2
+  [ ] Checkbox 2 label uses exact template text from Section 2
+  [ ] Message type disclosed in checkbox text (Customer Care / Marketing)
+  [ ] Message frequency disclosed in checkbox text ("Up to 4 msgs/month")
+  [ ] Opt-out instructions in checkbox text ("Reply STOP to unsubscribe")
+  [ ] Message & data rates disclosure in checkbox text
+  [ ] Disclaimer paragraph present below checkboxes
+  [ ] Disclaimer includes "not required as a condition of purchase"
+  [ ] Disclaimer includes "18 or older to consent"
+  [ ] Disclaimer includes "Msg & data rates may apply"
+  [ ] Disclaimer includes "Reply STOP to cancel"
+  [ ] Disclaimer includes "Reply HELP for support"
+  [ ] Disclaimer includes non-sharing statement
+  [ ] Privacy Policy & Terms links in footer (both open in new tab)
+  [ ] Form submits without requiring either box to be checked
+
+PRIVACY POLICY
+  [ ] What information is collected
+  [ ] How user data is used
+  [ ] SMS opt-in details (types, frequency, STOP/HELP, 18+)
+  [ ] Cookie & tracking practices
+  [ ] Data security and handling
+  [ ] User rights (access, correct, delete, unsubscribe)
+  [ ] Strict prohibition clause (no lead buying/selling)
+  [ ] Mobile info sharing statement — exact language from Section 2
+  [ ] Cross-link to Terms & Conditions
+
+TERMS OF SERVICE
+  [ ] Business name and description
+  [ ] Description of SMS use cases (Customer Care / Marketing)
+  [ ] Messaging consent: form submission ≠ SMS consent
+  [ ] Message types listed (Customer Care / Marketing)
+  [ ] Message frequency disclosed ("up to 4 msgs/month")
+  [ ] Opt-out instructions (Reply STOP)
+  [ ] Customer support contact (HELP keyword + email + phone)
+  [ ] Message & data rate disclosure
+  [ ] Carrier liability disclaimer
+  [ ] Age restriction (18+)
+  [ ] Governing law ([governing state])
+  [ ] Cross-link to Privacy Policy
+
+CAMPAIGN REGISTRATION
+  [ ] Brand details filled in from Section 1
+  [ ] Campaign description filled in and submitted from Section 3
+  [ ] CTA / opt-in flow filled in and submitted from Section 3
+  [ ] Sample messages filled in and submitted from Section 3
+  [ ] Opt-in confirmation message set per Section 3
+  [ ] Campaign attributes match Section 3
+  [ ] Opt-In Form URL entered correctly
+
+================================================================
+END OF GUIDE
+================================================================
