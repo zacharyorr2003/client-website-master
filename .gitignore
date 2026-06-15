@@ -1,1 +1,12 @@
 node_modules/
+
+# dev artifacts
+temporary screenshots/
+*.zip
+
+# local / OS
+.netlify
+*.env
+.env*
+.DS_Store
+Thumbs.db

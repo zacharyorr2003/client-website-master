@@ -7,76 +7,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
   <style>
-    :root {
-      --ink:    #080D18;
-      --paper:  #FAFAF7;
-      --void:   #0B1D3A;
-      --gold:   #60BFFF;
-      --amber:  #2E9AF0;
-      --ember:  #1B7FE0;
-      --signal: #1252CC;
-      --logo-a: #0A2F82;
-      --logo-b: #3DA5FF;
-      --fire:   linear-gradient(135deg, #0A2F82, #1252CC, #1B7FE0, #60BFFF);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      background-color: var(--ink);
-      color: var(--paper);
-      font-family: 'Inter', sans-serif;
-      font-size: .9rem;
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    .font-display { font-family: 'Bebas Neue', sans-serif; }
-    .font-heading  { font-family: 'Rajdhani', sans-serif; font-weight: 700; }
-    .font-mono     { font-family: 'JetBrains Mono', monospace; }
-
-    .text-fire   { background: var(--fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .text-signal { color: var(--signal); }
-    .text-body   { color: rgba(250,250,247,.65); }
-
-    .card {
-      background: rgba(250,250,247,.03);
-      border: 1px solid rgba(250,250,247,.07);
-      border-radius: 8px;
-    }
-    .divider { border-bottom: 1px solid rgba(250,250,247,.06); }
-
-    .btn {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      padding: .65rem 1.5rem;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: transform .15s ease, opacity .15s ease;
-      text-decoration: none;
-    }
-    .btn:hover  { transform: translateY(-1px); opacity: .92; }
-    .btn:active { transform: translateY(0); opacity: 1; }
-    .btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
-
-    .btn-primary { background: var(--signal); color: var(--paper); border: none; }
-    .btn-ghost   { background: transparent; color: var(--paper); border: 1px solid rgba(250,250,247,.25); }
-    .btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
-
-    .nav-dropdown { display: none; }
-    .nav-item:focus-within .nav-dropdown { display: block; }
-
-    #mobile-menu { display: none; }
-    #mobile-menu.open { display: flex; flex-direction: column; gap: 1rem; }
-
     /* Blog card hover */
     .blog-card {
       position: relative;
@@ -99,10 +32,6 @@
       box-shadow: 0 16px 40px rgba(0,0,0,.35);
     }
 
-    @media (max-width: 900px) {
-      #navbar nav, #navbar .nav-phone { display: none !important; }
-      #hamburger { display: block !important; }
-    }
     @media (max-width: 720px) {
       #blog-grid { grid-template-columns: 1fr !important; }
     }
@@ -121,7 +50,8 @@
 <body>
 
 <!-- NAVBAR -->
-<header id="navbar" style="position:sticky;top:0;z-index:50;background:rgba(10,10,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(250,250,247,.06);">
+<!-- PARTIAL:navbar:START — do not edit here; edit partials/navbar.html then run: node build-partials.mjs -->
+<header id="navbar" style="position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--ink) 92%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid rgba(250,250,247,.06);">
   <div style="max-width:1280px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;height:72px;">
 
     <a href="index.html" style="display:flex;align-items:center;flex-shrink:0;">
@@ -130,20 +60,21 @@
 
     <nav style="display:flex;align-items:center;gap:1.5rem;" aria-label="Main navigation">
 
-      <a href="index.html" class="font-mono"
-         style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+      <a href="index.html" class="font-heading"
+         style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
          onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
         Home
       </a>
 
       <div class="nav-item" style="position:relative;">
-        <button class="font-mono"
-                style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.35rem;padding:0;transition:color .15s ease;"
+        <button class="font-heading"
+                style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.35rem;padding:0;transition:color .15s ease;"
                 onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
           Services
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="opacity:.5;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:220px;background:#141418;border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
+        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:220px;background:color-mix(in srgb, var(--ink) 88%, var(--paper) 7%);border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
+          <a href="services.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;color:var(--signal);text-decoration:none;border-bottom:1px solid rgba(250,250,247,.06);transition:background .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)'" onmouseout="this.style.background='transparent'">All Services</a>
           <a href="service-1.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 1 NAME]</a>
           <a href="service-2.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 2 NAME]</a>
           <a href="service-3.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 3 NAME]</a>
@@ -157,37 +88,47 @@
         </div>
       </div>
 
-      <a href="gallery.html" class="font-mono"
-         style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+      <a href="gallery.html" class="font-heading"
+         style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
          onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
         Our Work
       </a>
 
       <div class="nav-item" style="position:relative;">
-        <button class="font-mono"
-                style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.35rem;padding:0;transition:color .15s ease;"
+        <button class="font-heading"
+                style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.35rem;padding:0;transition:color .15s ease;"
                 onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
           Service Areas
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="opacity:.5;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:200px;background:#141418;border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
+        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:200px;background:color-mix(in srgb, var(--ink) 88%, var(--paper) 7%);border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
           <a href="area-1.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 1 NAME]</a>
           <a href="area-2.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 2 NAME]</a>
           <a href="area-3.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 3 NAME]</a>
           <a href="area-4.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 4 NAME]</a>
           <a href="area-5.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 5 NAME]</a>
           <a href="area-6.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 6 NAME]</a>
+          <a href="area-7.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 7 NAME]</a>
+          <a href="area-8.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 8 NAME]</a>
+          <a href="area-9.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 9 NAME]</a>
+          <a href="area-10.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 10 NAME]</a>
         </div>
       </div>
 
-      <!-- Blog — active -->
-      <a href="blog.html" class="font-mono"
-         style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);text-decoration:none;">
+      <a href="blog.html" class="font-heading"
+         style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+         onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
         Blog
       </a>
 
-      <a href="contact.html" class="font-mono"
-         style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+      <a href="faq.html" class="font-heading"
+         style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+         onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
+        FAQ
+      </a>
+
+      <a href="contact.html" class="font-heading"
+         style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
          onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
         Contact
       </a>
@@ -195,9 +136,9 @@
     </nav>
 
     <div style="display:flex;align-items:center;gap:1rem;">
-      <a href="tel:[PHONE]" class="font-mono nav-phone"
+      <a href="tel:[PHONE NUMBER]" class="font-mono nav-phone"
          style="font-size:.68rem;letter-spacing:.1em;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s ease;"
-         onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[PHONE]</a>
+         onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[PHONE NUMBER]</a>
       <a href="contact.html" class="btn btn-primary" style="padding:.5rem 1.25rem;font-size:.7rem;">Get Free Quote</a>
     </div>
 
@@ -208,33 +149,55 @@
     </button>
   </div>
 
-  <div id="mobile-menu" style="background:#0f0f14;border-top:1px solid rgba(250,250,247,.06);padding:1.25rem 1.5rem;">
+  <div id="mobile-menu" style="background:var(--ink);border-top:1px solid rgba(250,250,247,.06);padding:1.25rem 1.5rem;">
     <a href="index.html"    class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Home</a>
-    <a href="services.html" class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Services</a>
-    <a href="service-1.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 1 NAME]</a>
-    <a href="service-2.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 2 NAME]</a>
-    <a href="service-3.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 3 NAME]</a>
-    <a href="service-4.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 4 NAME]</a>
-    <a href="service-5.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 5 NAME]</a>
-    <a href="service-6.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 6 NAME]</a>
-    <a href="service-7.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 7 NAME]</a>
-    <a href="service-8.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 8 NAME]</a>
-    <a href="service-9.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 9 NAME]</a>
-    <a href="service-10.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 10 NAME]</a>
+
+    <!-- Services accordion -->
+    <button class="font-mono" onclick="toggleMobAcc('mob-svc','mob-svc-ico')" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;padding:0;cursor:pointer;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);">
+      Services
+      <svg id="mob-svc-ico" width="11" height="7" viewBox="0 0 10 6" fill="none" style="opacity:.55;transition:transform .2s ease;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div id="mob-svc" style="display:none;flex-direction:column;gap:.85rem;padding-left:1rem;">
+      <a href="services.html" style="font-size:.8rem;font-weight:600;color:var(--signal);text-decoration:none;">View All Services</a>
+      <a href="service-1.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 1 NAME]</a>
+      <a href="service-2.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 2 NAME]</a>
+      <a href="service-3.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 3 NAME]</a>
+      <a href="service-4.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 4 NAME]</a>
+      <a href="service-5.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 5 NAME]</a>
+      <a href="service-6.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 6 NAME]</a>
+      <a href="service-7.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 7 NAME]</a>
+      <a href="service-8.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 8 NAME]</a>
+      <a href="service-9.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 9 NAME]</a>
+      <a href="service-10.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 10 NAME]</a>
+    </div>
+
     <a href="gallery.html"   class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Our Work</a>
-    <a href="#" class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Service Areas</a>
-    <a href="area-1.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 1 NAME]</a>
-    <a href="area-2.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 2 NAME]</a>
-    <a href="area-3.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 3 NAME]</a>
-    <a href="area-4.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 4 NAME]</a>
-    <a href="area-5.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 5 NAME]</a>
-    <a href="area-6.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 6 NAME]</a>
-    <a href="blog.html"      class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--signal);text-decoration:none;">Blog</a>
-    <a href="faq.html"       class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;">FAQ</a>
+
+    <!-- Service Areas accordion -->
+    <button class="font-mono" onclick="toggleMobAcc('mob-area','mob-area-ico')" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;padding:0;cursor:pointer;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);">
+      Service Areas
+      <svg id="mob-area-ico" width="11" height="7" viewBox="0 0 10 6" fill="none" style="opacity:.55;transition:transform .2s ease;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div id="mob-area" style="display:none;flex-direction:column;gap:.85rem;padding-left:1rem;">
+      <a href="area-1.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 1 NAME]</a>
+      <a href="area-2.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 2 NAME]</a>
+      <a href="area-3.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 3 NAME]</a>
+      <a href="area-4.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 4 NAME]</a>
+      <a href="area-5.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 5 NAME]</a>
+      <a href="area-6.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 6 NAME]</a>
+      <a href="area-7.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 7 NAME]</a>
+      <a href="area-8.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 8 NAME]</a>
+      <a href="area-9.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 9 NAME]</a>
+      <a href="area-10.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 10 NAME]</a>
+    </div>
+
+    <a href="blog.html"      class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Blog</a>
+    <a href="faq.html"       class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">FAQ</a>
     <a href="contact.html"   class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Contact</a>
     <a href="contact.html" class="btn btn-primary" style="text-align:center;margin-top:.5rem;">Get Free Quote</a>
   </div>
 </header>
+<!-- PARTIAL:navbar:END -->
 
 
 <!-- PAGE HEADER -->
@@ -271,7 +234,7 @@
       <!-- Post 1 -->
       <article class="card blog-card" style="display:flex;flex-direction:column;">
         <a href="blog-1.html" style="display:block;overflow:hidden;border-radius:7px 7px 0 0;">
-          <img src="https://placehold.co/600x340/0b1122/1a2540?text=[POST+1+PHOTO]"
+          <img fetchpriority="high" width="600" height="340" src="https://placehold.co/600x340/0b1122/1a2540?text=[POST+1+PHOTO]"
                alt="[POST 1 TITLE]"
                style="width:100%;height:200px;object-fit:cover;display:block;transition:transform .35s ease;"
                onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
@@ -289,7 +252,7 @@
       <!-- Post 2 -->
       <article class="card blog-card" style="display:flex;flex-direction:column;">
         <a href="blog-2.html" style="display:block;overflow:hidden;border-radius:7px 7px 0 0;">
-          <img src="https://placehold.co/600x340/0b1122/1a2540?text=[POST+2+PHOTO]"
+          <img loading="lazy" decoding="async" width="600" height="340" src="https://placehold.co/600x340/0b1122/1a2540?text=[POST+2+PHOTO]"
                alt="[POST 2 TITLE]"
                style="width:100%;height:200px;object-fit:cover;display:block;transition:transform .35s ease;"
                onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
@@ -307,7 +270,7 @@
       <!-- Post 3 -->
       <article class="card blog-card" style="display:flex;flex-direction:column;">
         <a href="blog-3.html" style="display:block;overflow:hidden;border-radius:7px 7px 0 0;">
-          <img src="https://placehold.co/600x340/0b1122/1a2540?text=[POST+3+PHOTO]"
+          <img loading="lazy" decoding="async" width="600" height="340" src="https://placehold.co/600x340/0b1122/1a2540?text=[POST+3+PHOTO]"
                alt="[POST 3 TITLE]"
                style="width:100%;height:200px;object-fit:cover;display:block;transition:transform .35s ease;"
                onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
@@ -325,7 +288,7 @@
       <!-- Post 4 -->
       <article class="card blog-card" style="display:flex;flex-direction:column;">
         <a href="blog-4.html" style="display:block;overflow:hidden;border-radius:7px 7px 0 0;">
-          <img src="https://placehold.co/600x340/0b1122/1a2540?text=[POST+4+PHOTO]"
+          <img loading="lazy" decoding="async" width="600" height="340" src="https://placehold.co/600x340/0b1122/1a2540?text=[POST+4+PHOTO]"
                alt="[POST 4 TITLE]"
                style="width:100%;height:200px;object-fit:cover;display:block;transition:transform .35s ease;"
                onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
@@ -343,7 +306,7 @@
       <!-- Post 5 -->
       <article class="card blog-card" style="display:flex;flex-direction:column;">
         <a href="blog-5.html" style="display:block;overflow:hidden;border-radius:7px 7px 0 0;">
-          <img src="https://placehold.co/600x340/0b1122/1a2540?text=[POST+5+PHOTO]"
+          <img loading="lazy" decoding="async" width="600" height="340" src="https://placehold.co/600x340/0b1122/1a2540?text=[POST+5+PHOTO]"
                alt="[POST 5 TITLE]"
                style="width:100%;height:200px;object-fit:cover;display:block;transition:transform .35s ease;"
                onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
@@ -361,7 +324,7 @@
       <!-- Post 6 -->
       <article class="card blog-card" style="display:flex;flex-direction:column;">
         <a href="blog-6.html" style="display:block;overflow:hidden;border-radius:7px 7px 0 0;">
-          <img src="https://placehold.co/600x340/0b1122/1a2540?text=[POST+6+PHOTO]"
+          <img loading="lazy" decoding="async" width="600" height="340" src="https://placehold.co/600x340/0b1122/1a2540?text=[POST+6+PHOTO]"
                alt="[POST 6 TITLE]"
                style="width:100%;height:200px;object-fit:cover;display:block;transition:transform .35s ease;"
                onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
@@ -394,7 +357,7 @@
 
 
 <!-- FOOTER -->
-<footer style="background:#0d0d12;border-top:1px solid rgba(250,250,247,.06);padding:4rem 1.5rem 2rem;">
+<footer style="background:var(--ink);border-top:1px solid rgba(250,250,247,.06);padding:4rem 1.5rem 2rem;">
   <div style="max-width:1280px;margin:0 auto;">
 
     <div id="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(250,250,247,.06);">
@@ -462,19 +425,6 @@
 
 
 <script>
-  document.getElementById('footer-year').textContent = new Date().getFullYear();
-
-  document.querySelectorAll('.nav-item').forEach(item => {
-    const drop = item.querySelector('.nav-dropdown');
-    if (!drop) return;
-    let timer;
-    const show = () => { clearTimeout(timer); drop.style.display = 'block'; };
-    const hide = () => { timer = setTimeout(() => { drop.style.display = ''; }, 150); };
-    item.addEventListener('mouseenter', show);
-    item.addEventListener('mouseleave', hide);
-    drop.addEventListener('mouseenter', show);
-    drop.addEventListener('mouseleave', hide);
-  });
 
   /* Responsive blog grid */
   function checkGrid() {
@@ -489,12 +439,12 @@
 
 
 <!-- COOKIE / SMS CONSENT BANNER -->
-<div id="consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(8,13,24,.97);border-top:1px solid rgba(250,250,247,.08);backdrop-filter:blur(12px);padding:1.1rem 1.5rem;">
+<div id="consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:color-mix(in srgb, var(--ink) 97%, transparent);border-top:1px solid rgba(250,250,247,.08);backdrop-filter:blur(12px);padding:1.1rem 1.5rem;">
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
     <p style="font-family:'Inter',sans-serif;font-size:.8rem;color:rgba(250,250,247,.55);line-height:1.6;margin:0;max-width:700px;">
       We use cookies to improve your experience and may send SMS updates if you opt in. By continuing, you agree to our
-      <a href="privacy.html" style="color:#60BFFF;text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a> and
-      <a href="terms.html"   style="color:#60BFFF;text-decoration:underline;text-underline-offset:2px;">Terms &amp; Conditions</a>.
+      <a href="privacy.html" style="color:var(--signal);text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a> and
+      <a href="terms.html"   style="color:var(--signal);text-decoration:underline;text-underline-offset:2px;">Terms &amp; Conditions</a>.
       Reply STOP to any text to unsubscribe.
     </p>
     <div style="display:flex;gap:.75rem;flex-shrink:0;">
@@ -503,16 +453,7 @@
     </div>
   </div>
 </div>
-<script>
-  (function(){
-    if (!localStorage.getItem('site_consent')) {
-      document.getElementById('consent-banner').style.display = 'block';
-    }
-    window.handleConsent = function(choice) {
-      localStorage.setItem('site_consent', choice);
-      document.getElementById('consent-banner').style.display = 'none';
-    };
-  })();
-</script>
+
+<script src="site.js" defer></script>
 </body>
 </html>

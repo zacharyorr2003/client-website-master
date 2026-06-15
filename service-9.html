@@ -7,91 +7,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
   <style>
-    :root {
-      --ink:    #080D18;
-      --paper:  #FAFAF7;
-      --void:   #0B1D3A;
-      --gold:   #60BFFF;
-      --amber:  #2E9AF0;
-      --ember:  #1B7FE0;
-      --signal: #1252CC;
-      --logo-a: #0A2F82;
-      --logo-b: #3DA5FF;
-      --fire:   linear-gradient(135deg, #0A2F82, #1252CC, #1B7FE0, #60BFFF);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      background-color: var(--ink);
-      color: var(--paper);
-      font-family: 'Inter', sans-serif;
-      font-size: .9rem;
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    .font-display { font-family: 'Bebas Neue', sans-serif; }
-    .font-heading  { font-family: 'Rajdhani', sans-serif; font-weight: 700; }
-    .font-mono     { font-family: 'JetBrains Mono', monospace; }
-
-    .text-fire   { background: var(--fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .text-signal { color: var(--signal); }
-    .text-body   { color: rgba(250,250,247,.65); }
-
-    .card {
-      background: rgba(250,250,247,.03);
-      border: 1px solid rgba(250,250,247,.07);
-      border-radius: 8px;
-    }
-    .divider { border-bottom: 1px solid rgba(250,250,247,.06); }
-
-    .btn {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      padding: .65rem 1.5rem;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: transform .15s ease, opacity .15s ease;
-      text-decoration: none;
-    }
-    .btn:hover  { transform: translateY(-1px); opacity: .92; }
-    .btn:active { transform: translateY(0); opacity: 1; }
-    .btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
-
-    .btn-primary { background: var(--signal); color: var(--paper); border: none; }
-    .btn-ghost   { background: transparent; color: var(--paper); border: 1px solid rgba(250,250,247,.25); }
-    .btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
-
-    .field {
-      width: 100%;
-      background: rgba(250,250,247,.05);
-      border: 1px solid rgba(250,250,247,.12);
-      border-radius: 4px;
-      color: var(--paper);
-      font-family: 'Inter', sans-serif;
-      font-size: .9rem;
-      padding: .75rem 1rem;
-      transition: border-color .15s ease;
-      outline: none;
-    }
-    .field::placeholder { color: rgba(250,250,247,.3); }
-    .field:focus { border-color: var(--signal); }
-
-    .nav-dropdown { display: none; }
-    .nav-item:focus-within .nav-dropdown { display: block; }
-
-    #mobile-menu { display: none; }
-    #mobile-menu.open { display: flex; flex-direction: column; gap: 1rem; }
-
     /* Gallery grid */
     .gallery-grid {
       display: grid;
@@ -113,7 +31,7 @@
     .gallery-item:hover img { transform: scale(1.04); }
     .gallery-item-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,13,24,.55) 0%, transparent 50%);
+      background: linear-gradient(to top, color-mix(in srgb, var(--ink) 55%, transparent) 0%, transparent 50%);
       opacity: 0;
       transition: opacity .25s ease;
     }
@@ -137,10 +55,6 @@
       justify-content: center;
     }
 
-    @media (max-width: 900px) {
-      #navbar nav, #navbar .nav-phone { display: none !important; }
-      #hamburger { display: block !important; }
-    }
     @media (max-width: 768px) {
       #desc-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
     }
@@ -152,6 +66,7 @@
     @media (max-width: 420px) {
       #footer-grid { grid-template-columns: 1fr !important; }
     }
+      @media (max-width: 820px) { .deep-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; } }
   </style>
 
   <!-- Google Analytics — replace [GA_MEASUREMENT_ID] with your ID (e.g. G-XXXXXXXXXX) -->
@@ -161,7 +76,8 @@
 <body>
 
 <!-- NAVBAR -->
-<header id="navbar" style="position:sticky;top:0;z-index:50;background:rgba(10,10,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(250,250,247,.06);">
+<!-- PARTIAL:navbar:START — do not edit here; edit partials/navbar.html then run: node build-partials.mjs -->
+<header id="navbar" style="position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--ink) 92%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid rgba(250,250,247,.06);">
   <div style="max-width:1280px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;height:72px;">
 
     <a href="index.html" style="display:flex;align-items:center;flex-shrink:0;">
@@ -170,19 +86,21 @@
 
     <nav style="display:flex;align-items:center;gap:1.5rem;" aria-label="Main navigation">
 
-      <a href="index.html" class="font-mono"
-         style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+      <a href="index.html" class="font-heading"
+         style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
          onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
         Home
       </a>
 
       <div class="nav-item" style="position:relative;">
-        <button class="font-mono"
-                style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.35rem;padding:0;">
+        <button class="font-heading"
+                style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.35rem;padding:0;transition:color .15s ease;"
+                onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
           Services
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="opacity:.5;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:220px;background:#141418;border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
+        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:220px;background:color-mix(in srgb, var(--ink) 88%, var(--paper) 7%);border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
+          <a href="services.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;color:var(--signal);text-decoration:none;border-bottom:1px solid rgba(250,250,247,.06);transition:background .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)'" onmouseout="this.style.background='transparent'">All Services</a>
           <a href="service-1.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 1 NAME]</a>
           <a href="service-2.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 2 NAME]</a>
           <a href="service-3.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 3 NAME]</a>
@@ -191,42 +109,52 @@
           <a href="service-6.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 6 NAME]</a>
           <a href="service-7.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 7 NAME]</a>
           <a href="service-8.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 8 NAME]</a>
-          <a href="service-9.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:var(--paper);text-decoration:none;background:rgba(18,82,204,.1);">[SERVICE 9 NAME]</a>
+          <a href="service-9.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 9 NAME]</a>
           <a href="service-10.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 10 NAME]</a>
         </div>
       </div>
 
-      <a href="gallery.html" class="font-mono"
-         style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+      <a href="gallery.html" class="font-heading"
+         style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
          onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
         Our Work
       </a>
 
       <div class="nav-item" style="position:relative;">
-        <button class="font-mono"
-                style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.35rem;padding:0;transition:color .15s ease;"
+        <button class="font-heading"
+                style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.35rem;padding:0;transition:color .15s ease;"
                 onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
           Service Areas
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="opacity:.5;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:200px;background:#141418;border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
+        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:200px;background:color-mix(in srgb, var(--ink) 88%, var(--paper) 7%);border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
           <a href="area-1.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 1 NAME]</a>
           <a href="area-2.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 2 NAME]</a>
           <a href="area-3.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 3 NAME]</a>
           <a href="area-4.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 4 NAME]</a>
           <a href="area-5.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 5 NAME]</a>
           <a href="area-6.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 6 NAME]</a>
+          <a href="area-7.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 7 NAME]</a>
+          <a href="area-8.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 8 NAME]</a>
+          <a href="area-9.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 9 NAME]</a>
+          <a href="area-10.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 10 NAME]</a>
         </div>
       </div>
 
-      <a href="blog.html" class="font-mono"
-         style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+      <a href="blog.html" class="font-heading"
+         style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
          onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
         Blog
       </a>
 
-      <a href="contact.html" class="font-mono"
-         style="font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+      <a href="faq.html" class="font-heading"
+         style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+         onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
+        FAQ
+      </a>
+
+      <a href="contact.html" class="font-heading"
+         style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
          onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
         Contact
       </a>
@@ -234,9 +162,9 @@
     </nav>
 
     <div style="display:flex;align-items:center;gap:1rem;">
-      <a href="tel:[PHONE]" class="font-mono nav-phone"
+      <a href="tel:[PHONE NUMBER]" class="font-mono nav-phone"
          style="font-size:.68rem;letter-spacing:.1em;color:rgba(250,250,247,.6);text-decoration:none;transition:color .15s ease;"
-         onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[PHONE]</a>
+         onmouseover="this.style.color='var(--paper)'" onmouseout="this.style.color='rgba(250,250,247,.6)'">[PHONE NUMBER]</a>
       <a href="contact.html" class="btn btn-primary" style="padding:.5rem 1.25rem;font-size:.7rem;">Get Free Quote</a>
     </div>
 
@@ -247,26 +175,55 @@
     </button>
   </div>
 
-  <div id="mobile-menu" style="background:#0f0f14;border-top:1px solid rgba(250,250,247,.06);padding:1.25rem 1.5rem;">
+  <div id="mobile-menu" style="background:var(--ink);border-top:1px solid rgba(250,250,247,.06);padding:1.25rem 1.5rem;">
     <a href="index.html"    class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Home</a>
-    <a href="services.html" class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--signal);text-decoration:none;">Services</a>
-    <a href="service-1.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 1 NAME]</a>
-    <a href="service-2.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 2 NAME]</a>
-    <a href="service-3.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 3 NAME]</a>
-    <a href="service-4.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 4 NAME]</a>
-    <a href="service-5.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 5 NAME]</a>
-    <a href="service-6.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 6 NAME]</a>
-    <a href="service-7.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 7 NAME]</a>
-    <a href="service-8.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 8 NAME]</a>
-    <a href="service-9.html" style="padding-left:1rem;font-size:.8rem;color:var(--paper);text-decoration:none;">[SERVICE 9 NAME]</a>
-    <a href="service-10.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 10 NAME]</a>
+
+    <!-- Services accordion -->
+    <button class="font-mono" onclick="toggleMobAcc('mob-svc','mob-svc-ico')" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;padding:0;cursor:pointer;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);">
+      Services
+      <svg id="mob-svc-ico" width="11" height="7" viewBox="0 0 10 6" fill="none" style="opacity:.55;transition:transform .2s ease;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div id="mob-svc" style="display:none;flex-direction:column;gap:.85rem;padding-left:1rem;">
+      <a href="services.html" style="font-size:.8rem;font-weight:600;color:var(--signal);text-decoration:none;">View All Services</a>
+      <a href="service-1.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 1 NAME]</a>
+      <a href="service-2.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 2 NAME]</a>
+      <a href="service-3.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 3 NAME]</a>
+      <a href="service-4.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 4 NAME]</a>
+      <a href="service-5.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 5 NAME]</a>
+      <a href="service-6.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 6 NAME]</a>
+      <a href="service-7.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 7 NAME]</a>
+      <a href="service-8.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 8 NAME]</a>
+      <a href="service-9.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 9 NAME]</a>
+      <a href="service-10.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 10 NAME]</a>
+    </div>
+
     <a href="gallery.html"   class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Our Work</a>
+
+    <!-- Service Areas accordion -->
+    <button class="font-mono" onclick="toggleMobAcc('mob-area','mob-area-ico')" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;padding:0;cursor:pointer;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);">
+      Service Areas
+      <svg id="mob-area-ico" width="11" height="7" viewBox="0 0 10 6" fill="none" style="opacity:.55;transition:transform .2s ease;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div id="mob-area" style="display:none;flex-direction:column;gap:.85rem;padding-left:1rem;">
+      <a href="area-1.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 1 NAME]</a>
+      <a href="area-2.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 2 NAME]</a>
+      <a href="area-3.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 3 NAME]</a>
+      <a href="area-4.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 4 NAME]</a>
+      <a href="area-5.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 5 NAME]</a>
+      <a href="area-6.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 6 NAME]</a>
+      <a href="area-7.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 7 NAME]</a>
+      <a href="area-8.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 8 NAME]</a>
+      <a href="area-9.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 9 NAME]</a>
+      <a href="area-10.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 10 NAME]</a>
+    </div>
+
     <a href="blog.html"      class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Blog</a>
-    <a href="faq.html"       class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;">FAQ</a>
+    <a href="faq.html"       class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">FAQ</a>
     <a href="contact.html"   class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Contact</a>
     <a href="contact.html" class="btn btn-primary" style="text-align:center;margin-top:.5rem;">Get Free Quote</a>
   </div>
 </header>
+<!-- PARTIAL:navbar:END -->
 
 
 <!-- HERO -->
@@ -274,11 +231,11 @@
 
   <!-- Background image -->
   <div style="position:absolute;inset:0;">
-    <img src="https://placehold.co/1440x560/0a0f1e/1a2540?text=[SERVICE+9+HERO+PHOTO]"
+    <img fetchpriority="high" width="1440" height="560" src="https://placehold.co/1440x560/0a0f1e/1a2540?text=[SERVICE+9+HERO+PHOTO]"
          alt="[SERVICE 9 NAME]"
          style="width:100%;height:100%;object-fit:cover;">
     <!-- Gradient overlay -->
-    <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(8,13,24,.92) 0%, rgba(8,13,24,.6) 55%, rgba(8,13,24,.2) 100%);"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg, color-mix(in srgb, var(--ink) 92%, transparent) 0%, color-mix(in srgb, var(--ink) 60%, transparent) 55%, color-mix(in srgb, var(--ink) 20%, transparent) 100%);"></div>
     <!-- Color tint layer -->
     <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 15% 50%, rgba(10,47,130,.25) 0%, transparent 65%);"></div>
   </div>
@@ -306,77 +263,144 @@
 </section>
 
 
-<!-- DESCRIPTION + SUB-SERVICES -->
-<section style="padding:5rem 1.5rem;" class="divider">
-  <div id="desc-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+<!-- SERVICE DEEP-DIVE BLOCKS (4 alternating capability sections) -->
+<section class="divider deep-dive" style="padding:5rem 1.5rem;">
+  <div class="deep-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:4.5rem;align-items:center;">
+      <div style="position:relative;">
+        <div style="position:absolute;top:-12px;left:-12px;background:var(--signal);padding:.45rem 1rem;z-index:2;">
+          <span class="font-display" style="font-size:1.3rem;color:var(--paper);letter-spacing:.05em;">01</span>
+        </div>
+        <img loading="lazy" decoding="async" width="560" height="560" src="https://placehold.co/560x560/0e0e16/2a2a3a?text=[SERVICE+9+BLOCK+1+PHOTO]" alt="[SERVICE 9 NAME]: [SERVICE 9 BLOCK 1 LABEL]"
+             style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;box-shadow:0 0 60px color-mix(in srgb, var(--signal) 25%, transparent);">
+      </div>
+      <div>
+        <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">[SERVICE 9 BLOCK 1 LABEL]</p>
+        <h2 class="font-display" style="font-size:clamp(2.2rem,4.5vw,3.5rem);line-height:.95;margin:0 0 1rem;">[SERVICE 9 BLOCK 1 HEADLINE]</h2>
+        <p style="color:rgba(250,250,247,.6);font-size:.95rem;line-height:1.75;margin:0 0 1.75rem;">[SERVICE 9 BLOCK 1 INTRO]</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1rem;">
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 1 POINT 1]</strong>: [SERVICE 9 BLOCK 1 DETAIL 1]</p>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 1 POINT 2]</strong>: [SERVICE 9 BLOCK 1 DETAIL 2]</p>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 1 POINT 3]</strong>: [SERVICE 9 BLOCK 1 DETAIL 3]</p>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 1 POINT 4]</strong>: [SERVICE 9 BLOCK 1 DETAIL 4]</p>
+          </li>
+        </ul>
+      </div>
+  </div>
+</section>
 
-    <!-- Left: description -->
-    <div>
-      <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">About This Service</p>
-      <h2 class="font-heading" style="font-size:clamp(1.75rem,3.5vw,2.5rem);letter-spacing:.03em;text-transform:uppercase;margin:0 0 1.5rem;line-height:1.1;">[SERVICE 9 SECTION HEADING]</h2>
-      <p style="color:rgba(250,250,247,.65);font-size:.95rem;line-height:1.8;margin:0 0 1.25rem;">[SERVICE 9 DESCRIPTION PARAGRAPH 1]</p>
-      <p style="color:rgba(250,250,247,.55);font-size:.9rem;line-height:1.8;margin:0 0 2.5rem;">[SERVICE 9 DESCRIPTION PARAGRAPH 2]</p>
-      <a href="contact.html" class="btn btn-primary" style="font-size:.75rem;">Schedule a Free Estimate</a>
-    </div>
+<section class="divider deep-dive" style="padding:5rem 1.5rem;">
+  <div class="deep-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:4.5rem;align-items:center;">
+      <div>
+        <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">[SERVICE 9 BLOCK 2 LABEL]</p>
+        <h2 class="font-display" style="font-size:clamp(2.2rem,4.5vw,3.5rem);line-height:.95;margin:0 0 1rem;">[SERVICE 9 BLOCK 2 HEADLINE]</h2>
+        <p style="color:rgba(250,250,247,.6);font-size:.95rem;line-height:1.75;margin:0 0 1.75rem;">[SERVICE 9 BLOCK 2 INTRO]</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1rem;">
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 2 POINT 1]</strong>: [SERVICE 9 BLOCK 2 DETAIL 1]</p>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 2 POINT 2]</strong>: [SERVICE 9 BLOCK 2 DETAIL 2]</p>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 2 POINT 3]</strong>: [SERVICE 9 BLOCK 2 DETAIL 3]</p>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 2 POINT 4]</strong>: [SERVICE 9 BLOCK 2 DETAIL 4]</p>
+          </li>
+        </ul>
+      </div>
+      <div style="position:relative;">
+        <div style="position:absolute;top:-12px;right:-12px;background:var(--signal);padding:.45rem 1rem;z-index:2;">
+          <span class="font-display" style="font-size:1.3rem;color:var(--paper);letter-spacing:.05em;">02</span>
+        </div>
+        <img loading="lazy" decoding="async" width="560" height="560" src="https://placehold.co/560x560/111122/2f2f44?text=[SERVICE+9+BLOCK+2+PHOTO]" alt="[SERVICE 9 NAME]: [SERVICE 9 BLOCK 2 LABEL]"
+             style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;box-shadow:0 0 60px color-mix(in srgb, var(--signal) 25%, transparent);">
+      </div>
+  </div>
+</section>
 
-    <!-- Right: sub-services checklist -->
-    <div>
-      <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:1.25rem;">What's Included</p>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1rem;">
+<section class="divider deep-dive" style="padding:5rem 1.5rem;">
+  <div class="deep-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:4.5rem;align-items:center;">
+      <div style="position:relative;">
+        <div style="position:absolute;top:-12px;left:-12px;background:var(--signal);padding:.45rem 1rem;z-index:2;">
+          <span class="font-display" style="font-size:1.3rem;color:var(--paper);letter-spacing:.05em;">03</span>
+        </div>
+        <img loading="lazy" decoding="async" width="560" height="560" src="https://placehold.co/560x560/0d0d18/29293c?text=[SERVICE+9+BLOCK+3+PHOTO]" alt="[SERVICE 9 NAME]: [SERVICE 9 BLOCK 3 LABEL]"
+             style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;box-shadow:0 0 60px color-mix(in srgb, var(--signal) 25%, transparent);">
+      </div>
+      <div>
+        <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">[SERVICE 9 BLOCK 3 LABEL]</p>
+        <h2 class="font-display" style="font-size:clamp(2.2rem,4.5vw,3.5rem);line-height:.95;margin:0 0 1rem;">[SERVICE 9 BLOCK 3 HEADLINE]</h2>
+        <p style="color:rgba(250,250,247,.6);font-size:.95rem;line-height:1.75;margin:0 0 1.75rem;">[SERVICE 9 BLOCK 3 INTRO]</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1rem;">
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 3 POINT 1]</strong>: [SERVICE 9 BLOCK 3 DETAIL 1]</p>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 3 POINT 2]</strong>: [SERVICE 9 BLOCK 3 DETAIL 2]</p>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 3 POINT 3]</strong>: [SERVICE 9 BLOCK 3 DETAIL 3]</p>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 3 POINT 4]</strong>: [SERVICE 9 BLOCK 3 DETAIL 4]</p>
+          </li>
+        </ul>
+      </div>
+  </div>
+</section>
 
-        <li class="check-item">
-          <span class="check-icon">
-            <svg width="9" height="7" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div>
-            <p class="font-heading" style="font-size:1rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .15rem;">[SUB-SERVICE 1 NAME]</p>
-            <p style="font-size:.83rem;color:rgba(250,250,247,.5);margin:0;line-height:1.5;">[SUB-SERVICE 1 BRIEF DESCRIPTION]</p>
-          </div>
-        </li>
-
-        <li class="check-item">
-          <span class="check-icon">
-            <svg width="9" height="7" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div>
-            <p class="font-heading" style="font-size:1rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .15rem;">[SUB-SERVICE 2 NAME]</p>
-            <p style="font-size:.83rem;color:rgba(250,250,247,.5);margin:0;line-height:1.5;">[SUB-SERVICE 2 BRIEF DESCRIPTION]</p>
-          </div>
-        </li>
-
-        <li class="check-item">
-          <span class="check-icon">
-            <svg width="9" height="7" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div>
-            <p class="font-heading" style="font-size:1rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .15rem;">[SUB-SERVICE 3 NAME]</p>
-            <p style="font-size:.83rem;color:rgba(250,250,247,.5);margin:0;line-height:1.5;">[SUB-SERVICE 3 BRIEF DESCRIPTION]</p>
-          </div>
-        </li>
-
-        <li class="check-item">
-          <span class="check-icon">
-            <svg width="9" height="7" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div>
-            <p class="font-heading" style="font-size:1rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .15rem;">[SUB-SERVICE 4 NAME]</p>
-            <p style="font-size:.83rem;color:rgba(250,250,247,.5);margin:0;line-height:1.5;">[SUB-SERVICE 4 BRIEF DESCRIPTION]</p>
-          </div>
-        </li>
-
-        <li class="check-item">
-          <span class="check-icon">
-            <svg width="9" height="7" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div>
-            <p class="font-heading" style="font-size:1rem;letter-spacing:.03em;text-transform:uppercase;margin:0 0 .15rem;">[SUB-SERVICE 5 NAME]</p>
-            <p style="font-size:.83rem;color:rgba(250,250,247,.5);margin:0;line-height:1.5;">[SUB-SERVICE 5 BRIEF DESCRIPTION]</p>
-          </div>
-        </li>
-
-      </ul>
-    </div>
-
+<section class="divider deep-dive" style="padding:5rem 1.5rem;">
+  <div class="deep-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:4.5rem;align-items:center;">
+      <div>
+        <p class="font-mono" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);margin-bottom:.75rem;">[SERVICE 9 BLOCK 4 LABEL]</p>
+        <h2 class="font-display" style="font-size:clamp(2.2rem,4.5vw,3.5rem);line-height:.95;margin:0 0 1rem;">[SERVICE 9 BLOCK 4 HEADLINE]</h2>
+        <p style="color:rgba(250,250,247,.6);font-size:.95rem;line-height:1.75;margin:0 0 1.75rem;">[SERVICE 9 BLOCK 4 INTRO]</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1rem;">
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 4 POINT 1]</strong>: [SERVICE 9 BLOCK 4 DETAIL 1]</p>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 4 POINT 2]</strong>: [SERVICE 9 BLOCK 4 DETAIL 2]</p>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 4 POINT 3]</strong>: [SERVICE 9 BLOCK 4 DETAIL 3]</p>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:.9rem;">
+            <span style="flex-shrink:0;margin-top:.45rem;width:10px;height:10px;background:var(--signal);"></span>
+            <p style="margin:0;font-size:.9rem;line-height:1.65;color:rgba(250,250,247,.55);"><strong style="color:var(--paper);font-family:'Rajdhani',sans-serif;letter-spacing:.04em;text-transform:uppercase;">[SERVICE 9 BLOCK 4 POINT 4]</strong>: [SERVICE 9 BLOCK 4 DETAIL 4]</p>
+          </li>
+        </ul>
+      </div>
+      <div style="position:relative;">
+        <div style="position:absolute;top:-12px;right:-12px;background:var(--signal);padding:.45rem 1rem;z-index:2;">
+          <span class="font-display" style="font-size:1.3rem;color:var(--paper);letter-spacing:.05em;">04</span>
+        </div>
+        <img loading="lazy" decoding="async" width="560" height="560" src="https://placehold.co/560x560/121226/30304a?text=[SERVICE+9+BLOCK+4+PHOTO]" alt="[SERVICE 9 NAME]: [SERVICE 9 BLOCK 4 LABEL]"
+             style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;box-shadow:0 0 60px color-mix(in srgb, var(--signal) 25%, transparent);">
+      </div>
   </div>
 </section>
 
@@ -396,27 +420,27 @@
     <div class="gallery-grid">
 
       <div class="gallery-item span-2" style="aspect-ratio:16/9;">
-        <img src="https://placehold.co/880x495/0f0f1a/1e2540?text=[SERVICE+9+PHOTO+1]" alt="[SERVICE 9 NAME] example work">
+        <img loading="lazy" decoding="async" width="880" height="495" src="https://placehold.co/880x495/0f0f1a/1e2540?text=[SERVICE+9+PHOTO+1]" alt="[SERVICE 9 NAME] example work">
         <div class="gallery-item-overlay"></div>
       </div>
 
       <div class="gallery-item">
-        <img src="https://placehold.co/440x330/111120/252545?text=[SERVICE+9+PHOTO+2]" alt="[SERVICE 9 NAME] example work">
+        <img loading="lazy" decoding="async" width="440" height="330" src="https://placehold.co/440x330/111120/252545?text=[SERVICE+9+PHOTO+2]" alt="[SERVICE 9 NAME] example work">
         <div class="gallery-item-overlay"></div>
       </div>
 
       <div class="gallery-item">
-        <img src="https://placehold.co/440x330/0d0d1a/1d2040?text=[SERVICE+9+PHOTO+3]" alt="[SERVICE 9 NAME] example work">
+        <img loading="lazy" decoding="async" width="440" height="330" src="https://placehold.co/440x330/0d0d1a/1d2040?text=[SERVICE+9+PHOTO+3]" alt="[SERVICE 9 NAME] example work">
         <div class="gallery-item-overlay"></div>
       </div>
 
       <div class="gallery-item">
-        <img src="https://placehold.co/440x330/121222/22254a?text=[SERVICE+9+PHOTO+4]" alt="[SERVICE 9 NAME] example work">
+        <img loading="lazy" decoding="async" width="440" height="330" src="https://placehold.co/440x330/121222/22254a?text=[SERVICE+9+PHOTO+4]" alt="[SERVICE 9 NAME] example work">
         <div class="gallery-item-overlay"></div>
       </div>
 
       <div class="gallery-item span-2" style="aspect-ratio:16/7;">
-        <img src="https://placehold.co/880x385/0a0f1e/161e40?text=[SERVICE+9+PHOTO+5]" alt="[SERVICE 9 NAME] example work">
+        <img loading="lazy" decoding="async" width="880" height="385" src="https://placehold.co/880x385/0a0f1e/161e40?text=[SERVICE+9+PHOTO+5]" alt="[SERVICE 9 NAME] example work">
         <div class="gallery-item-overlay"></div>
       </div>
 
@@ -448,7 +472,6 @@
          5. Delete the "Static review cards" block below once the widget is live
          ═══════════════════════════════════════════════════════════════ -->
     <!--
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
     <div class="elfsight-app-YOUR-APP-ID" data-elfsight-app-lazy></div>
     -->
 
@@ -648,7 +671,7 @@
 
 
 <!-- FOOTER -->
-<footer style="background:#0d0d12;border-top:1px solid rgba(250,250,247,.06);padding:4rem 1.5rem 2rem;">
+<footer style="background:var(--ink);border-top:1px solid rgba(250,250,247,.06);padding:4rem 1.5rem 2rem;">
   <div style="max-width:1280px;margin:0 auto;">
 
     <div id="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(250,250,247,.06);">
@@ -715,30 +738,16 @@
 </footer>
 
 
-<script>
-  document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-  document.querySelectorAll('.nav-item').forEach(item => {
-    const drop = item.querySelector('.nav-dropdown');
-    if (!drop) return;
-    let timer;
-    const show = () => { clearTimeout(timer); drop.style.display = 'block'; };
-    const hide = () => { timer = setTimeout(() => { drop.style.display = ''; }, 150); };
-    item.addEventListener('mouseenter', show);
-    item.addEventListener('mouseleave', hide);
-    drop.addEventListener('mouseenter', show);
-    drop.addEventListener('mouseleave', hide);
-  });
-</script>
 
 
 <!-- COOKIE / SMS CONSENT BANNER -->
-<div id="consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(8,13,24,.97);border-top:1px solid rgba(250,250,247,.08);backdrop-filter:blur(12px);padding:1.1rem 1.5rem;">
+<div id="consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:color-mix(in srgb, var(--ink) 97%, transparent);border-top:1px solid rgba(250,250,247,.08);backdrop-filter:blur(12px);padding:1.1rem 1.5rem;">
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
     <p style="font-family:'Inter',sans-serif;font-size:.8rem;color:rgba(250,250,247,.55);line-height:1.6;margin:0;max-width:700px;">
       We use cookies to improve your experience and may send SMS updates if you opt in. By continuing, you agree to our
-      <a href="privacy.html" style="color:#60BFFF;text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a> and
-      <a href="terms.html"   style="color:#60BFFF;text-decoration:underline;text-underline-offset:2px;">Terms &amp; Conditions</a>.
+      <a href="privacy.html" style="color:var(--signal);text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a> and
+      <a href="terms.html"   style="color:var(--signal);text-decoration:underline;text-underline-offset:2px;">Terms &amp; Conditions</a>.
       Reply STOP to any text to unsubscribe.
     </p>
     <div style="display:flex;gap:.75rem;flex-shrink:0;">
@@ -747,16 +756,7 @@
     </div>
   </div>
 </div>
-<script>
-  (function(){
-    if (!localStorage.getItem('site_consent')) {
-      document.getElementById('consent-banner').style.display = 'block';
-    }
-    window.handleConsent = function(choice) {
-      localStorage.setItem('site_consent', choice);
-      document.getElementById('consent-banner').style.display = 'none';
-    };
-  })();
-</script>
+
+<script src="site.js" defer></script>
 </body>
 </html>

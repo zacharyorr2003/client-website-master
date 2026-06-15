@@ -7,89 +7,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
   <style>
-    :root {
-      --ink:    #080D18;
-      --paper:  #FAFAF7;
-      --void:   #0B1D3A;
-      --gold:   #60BFFF;
-      --amber:  #2E9AF0;
-      --ember:  #1B7FE0;
-      --signal: #1252CC;
-      --logo-a: #0A2F82;
-      --logo-b: #3DA5FF;
-      --fire:   linear-gradient(135deg, #0A2F82, #1252CC, #1B7FE0, #60BFFF);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      background-color: var(--ink);
-      color: var(--paper);
-      font-family: 'Inter', sans-serif;
-      font-size: .9rem;
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    .font-display { font-family: 'Bebas Neue', sans-serif; }
-    .font-heading  { font-family: 'Rajdhani', sans-serif; font-weight: 700; }
-    .font-mono     { font-family: 'JetBrains Mono', monospace; }
-
-    .text-fire   { background: var(--fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .text-signal { color: var(--signal); }
-
-    .card {
-      background: rgba(250,250,247,.03);
-      border: 1px solid rgba(250,250,247,.07);
-      border-radius: 8px;
-    }
-    .divider { border-bottom: 1px solid rgba(250,250,247,.06); }
-
-    .btn {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      padding: .65rem 1.5rem;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: transform .15s ease, opacity .15s ease;
-      text-decoration: none;
-    }
-    .btn:hover  { transform: translateY(-1px); opacity: .92; }
-    .btn:active { transform: translateY(0); opacity: 1; }
-    .btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
-
-    .btn-primary { background: var(--signal); color: var(--paper); border: none; }
-    .btn-ghost   { background: transparent; color: var(--paper); border: 1px solid rgba(250,250,247,.25); }
-    .btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
-
-    .nav-dropdown { display: none; }
-    .nav-item:focus-within .nav-dropdown { display: block; }
-
-    #mobile-menu { display: none; }
-    #mobile-menu.open { display: flex; flex-direction: column; gap: 1rem; }
-
-    .field {
-      width: 100%;
-      background: rgba(250,250,247,.05);
-      border: 1px solid rgba(250,250,247,.12);
-      border-radius: 4px;
-      color: var(--paper);
-      font-family: 'Inter', sans-serif;
-      font-size: .9rem;
-      padding: .75rem 1rem;
-      transition: border-color .15s ease;
-      outline: none;
-    }
-    .field::placeholder { color: rgba(250,250,247,.3); }
-    .field:focus { border-color: var(--signal); }
 
     /* Service card hover */
     .svc-card {
@@ -117,7 +37,7 @@
     .gal-item:hover img { transform: scale(1.04); }
     .gal-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,10,15,.7) 0%, transparent 60%);
+      background: linear-gradient(to top, color-mix(in srgb, var(--ink) 70%, transparent) 0%, transparent 60%);
       opacity: 0;
       transition: opacity .3s ease;
     }
@@ -148,10 +68,7 @@
     .faq-trigger:focus-visible { outline: 2px solid var(--signal); outline-offset: -2px; }
 
     /* Responsive */
-    @media (max-width: 900px) {
-      #navbar nav, #navbar .nav-phone { display: none !important; }
-      #hamburger { display: block !important; }
-    }
+    
     @media (max-width: 768px) {
       #about-grid  { grid-template-columns: 1fr !important; }
       #team-grid   { grid-template-columns: 1fr !important; }
@@ -174,17 +91,19 @@
 <!-- ============================================================
      NAVBAR
      ============================================================ -->
-<header id="navbar" style="position:sticky;top:0;z-index:50;background:rgba(10,10,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(250,250,247,.06);">
+<!-- PARTIAL:navbar:START — do not edit here; edit partials/navbar.html then run: node build-partials.mjs -->
+<header id="navbar" style="position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--ink) 92%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid rgba(250,250,247,.06);">
   <div style="max-width:1280px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;height:72px;">
 
     <a href="index.html" style="display:flex;align-items:center;flex-shrink:0;">
-      <img src="logo-placeholder-png-2.png" alt="[BRAND NAME]" style="height:44px;width:auto;">
+      <img src="logo.png" alt="[BRAND NAME]" style="height:44px;width:auto;">
     </a>
 
     <nav style="display:flex;align-items:center;gap:1.5rem;" aria-label="Main navigation">
 
       <a href="index.html" class="font-heading"
-         style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);text-decoration:none;">
+         style="font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;transition:color .15s ease;"
+         onmouseover="this.style.color='var(--signal)'" onmouseout="this.style.color='rgba(250,250,247,.7)'">
         Home
       </a>
 
@@ -195,7 +114,8 @@
           Services
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="opacity:.5;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:220px;background:#141418;border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
+        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:220px;background:color-mix(in srgb, var(--ink) 88%, var(--paper) 7%);border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
+          <a href="services.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;color:var(--signal);text-decoration:none;border-bottom:1px solid rgba(250,250,247,.06);transition:background .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)'" onmouseout="this.style.background='transparent'">All Services</a>
           <a href="service-1.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 1 NAME]</a>
           <a href="service-2.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 2 NAME]</a>
           <a href="service-3.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[SERVICE 3 NAME]</a>
@@ -222,7 +142,7 @@
           Service Areas
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="opacity:.5;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:200px;background:#141418;border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
+        <div class="nav-dropdown" style="position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:200px;background:color-mix(in srgb, var(--ink) 88%, var(--paper) 7%);border:1px solid rgba(250,250,247,.08);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
           <a href="area-1.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 1 NAME]</a>
           <a href="area-2.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 2 NAME]</a>
           <a href="area-3.html" style="display:block;padding:.7rem 1.2rem;font-family:'Inter',sans-serif;font-size:.85rem;color:rgba(250,250,247,.8);text-decoration:none;transition:background .1s,color .1s;" onmouseover="this.style.background='rgba(18,82,204,.12)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='rgba(250,250,247,.8)'">[AREA 3 NAME]</a>
@@ -270,26 +190,55 @@
     </button>
   </div>
 
-  <div id="mobile-menu" style="background:#0f0f14;border-top:1px solid rgba(250,250,247,.06);padding:1.25rem 1.5rem;">
-    <a href="index.html"    class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--signal);text-decoration:none;">Home</a>
-    <a href="services.html" class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Services</a>
-    <a href="service-1.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 1 NAME]</a>
-    <a href="service-2.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 2 NAME]</a>
-    <a href="service-3.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 3 NAME]</a>
-    <a href="service-4.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 4 NAME]</a>
-    <a href="service-5.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 5 NAME]</a>
-    <a href="service-6.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 6 NAME]</a>
-    <a href="service-7.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 7 NAME]</a>
-    <a href="service-8.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 8 NAME]</a>
-    <a href="service-9.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 9 NAME]</a>
-    <a href="service-10.html" style="padding-left:1rem;font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 10 NAME]</a>
+  <div id="mobile-menu" style="background:var(--ink);border-top:1px solid rgba(250,250,247,.06);padding:1.25rem 1.5rem;">
+    <a href="index.html"    class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Home</a>
+
+    <!-- Services accordion -->
+    <button class="font-mono" onclick="toggleMobAcc('mob-svc','mob-svc-ico')" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;padding:0;cursor:pointer;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);">
+      Services
+      <svg id="mob-svc-ico" width="11" height="7" viewBox="0 0 10 6" fill="none" style="opacity:.55;transition:transform .2s ease;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div id="mob-svc" style="display:none;flex-direction:column;gap:.85rem;padding-left:1rem;">
+      <a href="services.html" style="font-size:.8rem;font-weight:600;color:var(--signal);text-decoration:none;">View All Services</a>
+      <a href="service-1.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 1 NAME]</a>
+      <a href="service-2.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 2 NAME]</a>
+      <a href="service-3.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 3 NAME]</a>
+      <a href="service-4.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 4 NAME]</a>
+      <a href="service-5.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 5 NAME]</a>
+      <a href="service-6.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 6 NAME]</a>
+      <a href="service-7.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 7 NAME]</a>
+      <a href="service-8.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 8 NAME]</a>
+      <a href="service-9.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 9 NAME]</a>
+      <a href="service-10.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[SERVICE 10 NAME]</a>
+    </div>
+
     <a href="gallery.html"   class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Our Work</a>
+
+    <!-- Service Areas accordion -->
+    <button class="font-mono" onclick="toggleMobAcc('mob-area','mob-area-ico')" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;padding:0;cursor:pointer;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);">
+      Service Areas
+      <svg id="mob-area-ico" width="11" height="7" viewBox="0 0 10 6" fill="none" style="opacity:.55;transition:transform .2s ease;"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div id="mob-area" style="display:none;flex-direction:column;gap:.85rem;padding-left:1rem;">
+      <a href="area-1.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 1 NAME]</a>
+      <a href="area-2.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 2 NAME]</a>
+      <a href="area-3.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 3 NAME]</a>
+      <a href="area-4.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 4 NAME]</a>
+      <a href="area-5.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 5 NAME]</a>
+      <a href="area-6.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 6 NAME]</a>
+      <a href="area-7.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 7 NAME]</a>
+      <a href="area-8.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 8 NAME]</a>
+      <a href="area-9.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 9 NAME]</a>
+      <a href="area-10.html" style="font-size:.8rem;color:rgba(250,250,247,.6);text-decoration:none;">[AREA 10 NAME]</a>
+    </div>
+
     <a href="blog.html"      class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Blog</a>
-    <a href="faq.html"       class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,247,.7);text-decoration:none;">FAQ</a>
+    <a href="faq.html"       class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">FAQ</a>
     <a href="contact.html"   class="font-mono" style="font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper);text-decoration:none;">Contact</a>
     <a href="contact.html" class="btn btn-primary" style="text-align:center;margin-top:.5rem;">Get Free Quote</a>
   </div>
 </header>
+<!-- PARTIAL:navbar:END -->
 
 
 <!-- ============================================================
@@ -440,9 +389,9 @@
                   <input type="checkbox" name="sms_consent" id="hero-sms" required
                          style="appearance:none;width:17px;height:17px;background:rgba(250,250,247,.05);border:1px solid rgba(250,250,247,.25);border-radius:3px;cursor:pointer;transition:background .15s,border-color .15s;"
                          onchange="this.style.background=this.checked?'var(--signal)':'rgba(250,250,247,.05)';this.style.borderColor=this.checked?'var(--signal)':'rgba(250,250,247,.25)';document.getElementById('hero-check').style.opacity=this.checked?'1':'0';">
-                  <svg id="hero-check" style="position:absolute;top:2px;left:2px;pointer-events:none;opacity:0;transition:opacity .1s;" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <svg id="hero-check" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:opacity .1s;" width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
-                <span style="font-size:.76rem;color:rgba(250,250,247,.45);line-height:1.5;">I agree to the <a href="terms.html" style="color:var(--gold);text-decoration:underline;text-underline-offset:2px;">terms &amp; conditions</a> provided by the company. By providing my phone number, I agree to receive text messages from the business.</span>
+                <span style="font-size:.76rem;color:rgba(250,250,247,.45);line-height:1.5;">I agree to the <a href="terms.html" style="color:var(--signal);text-decoration:underline;text-underline-offset:2px;">terms &amp; conditions</a> provided by the company. By providing my phone number, I agree to receive text messages from the business.</span>
               </label>
 
               <!-- Submit -->
@@ -468,9 +417,7 @@
   @media (max-width: 768px) {
     #hero-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
   }
-  @keyframes btnSpin {
-    to { transform: rotate(360deg); }
-  }
+  
   @keyframes successFadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -562,7 +509,7 @@
     </div>
 
     <div style="position:relative;">
-      <img src="https://placehold.co/560x420/0f0f14/2a2a30?text=[About+Photo]" alt="[BRAND NAME] team"
+      <img fetchpriority="high" width="560" height="420" src="https://placehold.co/560x420/0f0f14/2a2a30?text=[About+Photo]" alt="[BRAND NAME] team"
            style="width:100%;border-radius:8px;display:block;">
       <div style="position:absolute;inset:0;border-radius:8px;background:linear-gradient(135deg,rgba(10,47,130,.14) 0%,transparent 55%);pointer-events:none;"></div>
       <!-- Decorative fire accent corner -->
@@ -641,9 +588,9 @@
     <!-- Group Photo -->
     <div style="width:100%;border-radius:10px;overflow:hidden;border:1px solid rgba(250,250,247,.07);margin-bottom:3rem;position:relative;">
       <div style="height:3px;background:var(--fire);"></div>
-      <img src="https://placehold.co/1100x500/0B1D3A/60BFFF?text=[GROUP+PHOTO]" alt="The [BRAND NAME] team"
+      <img loading="lazy" decoding="async" width="1100" height="500" src="https://placehold.co/1100x500/0B1D3A/60BFFF?text=[GROUP+PHOTO]" alt="The [BRAND NAME] team"
            style="width:100%;height:500px;object-fit:cover;display:block;filter:grayscale(15%);">
-      <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(8,13,24,.55) 0%, transparent 50%);pointer-events:none;"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top, color-mix(in srgb, var(--ink) 55%, transparent) 0%, transparent 50%);pointer-events:none;"></div>
     </div>
 
     <div id="team-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
@@ -652,7 +599,7 @@
       <div class="card" style="overflow:hidden;transition:transform .2s ease,box-shadow .2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(18,82,204,.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
         <div style="height:3px;background:var(--fire);"></div>
         <div style="aspect-ratio:1/1;overflow:hidden;background:rgba(250,250,247,.04);">
-          <img src="https://placehold.co/400x400/0B1D3A/60BFFF?text=[PHOTO]" alt="[TEAM MEMBER 1 NAME]"
+          <img loading="lazy" decoding="async" width="400" height="400" src="https://placehold.co/400x400/0B1D3A/60BFFF?text=[PHOTO]" alt="[TEAM MEMBER 1 NAME]"
                style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(20%);transition:transform .4s ease,filter .4s ease;"
                onmouseover="this.style.transform='scale(1.04)';this.style.filter='grayscale(0%)'"
                onmouseout="this.style.transform='scale(1)';this.style.filter='grayscale(20%)'">
@@ -668,7 +615,7 @@
       <div class="card" style="overflow:hidden;transition:transform .2s ease,box-shadow .2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(18,82,204,.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
         <div style="height:3px;background:var(--fire);"></div>
         <div style="aspect-ratio:1/1;overflow:hidden;background:rgba(250,250,247,.04);">
-          <img src="https://placehold.co/400x400/0B1D3A/60BFFF?text=[PHOTO]" alt="[TEAM MEMBER 2 NAME]"
+          <img loading="lazy" decoding="async" width="400" height="400" src="https://placehold.co/400x400/0B1D3A/60BFFF?text=[PHOTO]" alt="[TEAM MEMBER 2 NAME]"
                style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(20%);transition:transform .4s ease,filter .4s ease;"
                onmouseover="this.style.transform='scale(1.04)';this.style.filter='grayscale(0%)'"
                onmouseout="this.style.transform='scale(1)';this.style.filter='grayscale(20%)'">
@@ -684,7 +631,7 @@
       <div class="card" style="overflow:hidden;transition:transform .2s ease,box-shadow .2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(18,82,204,.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
         <div style="height:3px;background:var(--fire);"></div>
         <div style="aspect-ratio:1/1;overflow:hidden;background:rgba(250,250,247,.04);">
-          <img src="https://placehold.co/400x400/0B1D3A/60BFFF?text=[PHOTO]" alt="[TEAM MEMBER 3 NAME]"
+          <img loading="lazy" decoding="async" width="400" height="400" src="https://placehold.co/400x400/0B1D3A/60BFFF?text=[PHOTO]" alt="[TEAM MEMBER 3 NAME]"
                style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(20%);transition:transform .4s ease,filter .4s ease;"
                onmouseover="this.style.transform='scale(1.04)';this.style.filter='grayscale(0%)'"
                onmouseout="this.style.transform='scale(1)';this.style.filter='grayscale(20%)'">
@@ -759,27 +706,27 @@
 
     <div id="gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
       <div class="gal-item">
-        <img src="https://placehold.co/560x420/0f0f14/2d2d33?text=[Work+Photo+1]" alt="[BRAND NAME] work photo 1">
+        <img loading="lazy" decoding="async" width="560" height="420" src="https://placehold.co/560x420/0f0f14/2d2d33?text=[Work+Photo+1]" alt="[BRAND NAME] work photo 1">
         <div class="gal-overlay"></div>
       </div>
       <div class="gal-item">
-        <img src="https://placehold.co/560x420/111116/303036?text=[Work+Photo+2]" alt="[BRAND NAME] work photo 2">
+        <img loading="lazy" decoding="async" width="560" height="420" src="https://placehold.co/560x420/111116/303036?text=[Work+Photo+2]" alt="[BRAND NAME] work photo 2">
         <div class="gal-overlay"></div>
       </div>
       <div class="gal-item">
-        <img src="https://placehold.co/560x420/0d0d12/2b2b31?text=[Work+Photo+3]" alt="[BRAND NAME] work photo 3">
+        <img loading="lazy" decoding="async" width="560" height="420" src="https://placehold.co/560x420/0d0d12/2b2b31?text=[Work+Photo+3]" alt="[BRAND NAME] work photo 3">
         <div class="gal-overlay"></div>
       </div>
       <div class="gal-item">
-        <img src="https://placehold.co/560x420/121218/343440?text=[Work+Photo+4]" alt="[BRAND NAME] work photo 4">
+        <img loading="lazy" decoding="async" width="560" height="420" src="https://placehold.co/560x420/121218/343440?text=[Work+Photo+4]" alt="[BRAND NAME] work photo 4">
         <div class="gal-overlay"></div>
       </div>
       <div class="gal-item">
-        <img src="https://placehold.co/560x420/0e0e14/2f2f35?text=[Work+Photo+5]" alt="[BRAND NAME] work photo 5">
+        <img loading="lazy" decoding="async" width="560" height="420" src="https://placehold.co/560x420/0e0e14/2f2f35?text=[Work+Photo+5]" alt="[BRAND NAME] work photo 5">
         <div class="gal-overlay"></div>
       </div>
       <div class="gal-item">
-        <img src="https://placehold.co/560x420/10101a/323238?text=[Work+Photo+6]" alt="[BRAND NAME] work photo 6">
+        <img loading="lazy" decoding="async" width="560" height="420" src="https://placehold.co/560x420/10101a/323238?text=[Work+Photo+6]" alt="[BRAND NAME] work photo 6">
         <div class="gal-overlay"></div>
       </div>
     </div>
@@ -812,7 +759,6 @@
          5. Delete the "Static fallback review cards" block below once the widget is live
          ═══════════════════════════════════════════════════════════════ -->
     <!--
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
     <div class="elfsight-app-YOUR-APP-ID" data-elfsight-app-lazy></div>
     -->
 
@@ -1100,13 +1046,13 @@
 <!-- ============================================================
      FOOTER
      ============================================================ -->
-<footer style="background:#0d0d12;border-top:1px solid rgba(250,250,247,.06);padding:4rem 1.5rem 2rem;">
+<footer style="background:var(--ink);border-top:1px solid rgba(250,250,247,.06);padding:4rem 1.5rem 2rem;">
   <div style="max-width:1280px;margin:0 auto;">
 
     <div id="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(250,250,247,.06);">
 
       <div>
-        <img src="logo-placeholder-png-2.png" alt="[BRAND NAME]" style="height:36px;width:auto;margin-bottom:1.25rem;">
+        <img src="logo.png" alt="[BRAND NAME]" style="height:36px;width:auto;margin-bottom:1.25rem;">
         <p style="font-size:.85rem;color:rgba(250,250,247,.5);line-height:1.8;max-width:280px;">[TAGLINE]</p>
         <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.5rem;">
           <a href="tel:[PHONE NUMBER]" class="font-mono" style="font-size:.75rem;letter-spacing:.1em;color:rgba(250,250,247,.6);text-decoration:none;">[PHONE NUMBER]</a>
@@ -1171,40 +1117,16 @@
 </footer>
 
 
-<script>
-  document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-  // Nav dropdowns — grace period prevents flicker when crossing the gap
-  document.querySelectorAll('.nav-item').forEach(item => {
-    const drop = item.querySelector('.nav-dropdown');
-    if (!drop) return;
-    let timer;
-    const show = () => { clearTimeout(timer); drop.style.display = 'block'; };
-    const hide = () => { timer = setTimeout(() => { drop.style.display = ''; }, 150); };
-    item.addEventListener('mouseenter', show);
-    item.addEventListener('mouseleave', hide);
-    drop.addEventListener('mouseenter', show);
-    drop.addEventListener('mouseleave', hide);
-  });
-
-  document.querySelectorAll('.faq-trigger').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    });
-  });
-</script>
 
 
 <!-- COOKIE / SMS CONSENT BANNER -->
-<div id="consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(8,13,24,.97);border-top:1px solid rgba(250,250,247,.08);backdrop-filter:blur(12px);padding:1.1rem 1.5rem;">
+<div id="consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:color-mix(in srgb, var(--ink) 97%, transparent);border-top:1px solid rgba(250,250,247,.08);backdrop-filter:blur(12px);padding:1.1rem 1.5rem;">
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
     <p style="font-family:'Inter',sans-serif;font-size:.8rem;color:rgba(250,250,247,.55);line-height:1.6;margin:0;max-width:700px;">
       We use cookies to improve your experience and may send SMS updates if you opt in. By continuing, you agree to our
-      <a href="privacy.html" style="color:#60BFFF;text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a> and
-      <a href="terms.html"   style="color:#60BFFF;text-decoration:underline;text-underline-offset:2px;">Terms &amp; Conditions</a>.
+      <a href="privacy.html" style="color:var(--signal);text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a> and
+      <a href="terms.html"   style="color:var(--signal);text-decoration:underline;text-underline-offset:2px;">Terms &amp; Conditions</a>.
       Reply STOP to any text to unsubscribe.
     </p>
     <div style="display:flex;gap:.75rem;flex-shrink:0;">
@@ -1213,16 +1135,7 @@
     </div>
   </div>
 </div>
-<script>
-  (function(){
-    if (!localStorage.getItem('site_consent')) {
-      document.getElementById('consent-banner').style.display = 'block';
-    }
-    window.handleConsent = function(choice) {
-      localStorage.setItem('site_consent', choice);
-      document.getElementById('consent-banner').style.display = 'none';
-    };
-  })();
-</script>
+
+<script src="site.js" defer></script>
 </body>
 </html>

@@ -114,8 +114,62 @@ for (const link of footerLinks) {
   else { fail(`footer missing → ${link}`); errors++; }
 }
 
+// ── 10-14. Static content-quality gate (reads the HTML files directly) ───────
+import { readdirSync, readFileSync } from 'fs';
+const SKIP = new Set(['test.html', 'color-preview.html', 'our-work.html', 'review.html', '_shared.html']);
+const LEGAL = new Set(['privacy.html', 'terms.html']);        // legal templates may keep em dashes
+const PENDING_OK = ['[GHL_FORM_SUBMIT_URL]', '[GA_MEASUREMENT_ID]', '[REVIEW_LINK]', '[DOMAIN]', '[NETLIFY_ID]'];
+const htmlFiles = readdirSync('.').filter(f => f.endsWith('.html') && !SKIP.has(f));
+
+console.log('\n[10] No em dashes in visible copy (Zachary hard rule)');
+for (const f of htmlFiles) {
+  if (LEGAL.has(f)) continue;
+  const html = readFileSync(f, 'utf8')                          // visible copy only:
+    .replace(/<!--[\s\S]*?-->/g, '')                            // strip comments
+    .replace(/<script[\s\S]*?<\/script>/g, '')                  // strip scripts
+    .replace(/<style[\s\S]*?<\/style>/g, '');                   // strip styles
+  const hits = (html.match(/>[^<]*—[^<]*</g) || []);
+  if (hits.length === 0) pass(f);
+  else { fail(`${f} has ${hits.length} em dash(es) in copy, e.g. ${hits[0].slice(0, 50).trim()}`); errors++; }
+}
+
+console.log('\n[11] No stray unfilled placeholders (pending-launch tokens allowed)');
+for (const f of htmlFiles) {
+  const html = readFileSync(f, 'utf8');
+  const toks = [...new Set(html.match(/\[[A-Z][A-Z0-9 ._&/-]{2,40}\]/g) || [])].filter(t => !PENDING_OK.includes(t));
+  if (toks.length === 0) pass(f);
+  else { fail(`${f} has unfilled placeholders: ${toks.join(', ')}`); errors++; }
+}
+
+console.log('\n[12] Exactly one H1 per page');
+for (const f of htmlFiles) {
+  const n = (readFileSync(f, 'utf8').match(/<h1[\s>]/g) || []).length;
+  if (n === 1) pass(f);
+  else { fail(`${f} has ${n} H1 tags (need exactly 1)`); errors++; }
+}
+
+console.log('\n[13] SEO: og:image + canonical present (warn only)');
+let seoWarn = 0;
+for (const f of htmlFiles) {
+  if (LEGAL.has(f)) continue;
+  const html = readFileSync(f, 'utf8');
+  const miss = [];
+  if (!html.includes('property="og:image"')) miss.push('og:image');
+  if (!html.includes('rel="canonical"')) miss.push('canonical');
+  if (miss.length) { console.warn(`  ! ${f} missing ${miss.join(', ')}`); seoWarn++; }
+}
+if (seoWarn === 0) pass('all pages have og:image + canonical');
+else console.warn(`  (${seoWarn} page(s) with SEO gaps — fix before launch)`);
+
+console.log('\n[14] site.css has the dark-select fix (prevents white-on-white dropdowns)');
+{
+  const css = readFileSync('site.css', 'utf8');
+  if (/select\s*\{[^}]*color-scheme:\s*dark/.test(css)) pass('select { color-scheme: dark }');
+  else { fail('site.css missing `select { color-scheme: dark }` — native dropdowns will render white-on-white'); errors++; }
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 await browser.close();
 console.log(`\n${'─'.repeat(50)}`);
 if (errors === 0) console.log(`✓ ALL CHECKS PASSED`);
-else console.error(`✗ ${errors} FAILURE(S) — see above`);
+else { console.error(`✗ ${errors} FAILURE(S) — see above`); process.exitCode = 1; }

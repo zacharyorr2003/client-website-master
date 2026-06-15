@@ -29,9 +29,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Check: spacing/padding, font size/weight/line-height, colors (exact hex), alignment, border-radius, shadows, image sizing
 
 ## Output Defaults
-- Single `index.html` file, all styles inline, unless user says otherwise
-- Tailwind CSS via CDN: `<script src="https://cdn.tailwindcss.com"></script>`
+- **The navbar is a stamped partial.** It lives in `partials/navbar.html` and is stamped into every page between `<!-- PARTIAL:navbar:START -->` / `<!-- PARTIAL:navbar:END -->` markers by running `node build-partials.mjs`. NEVER edit a navbar inside a page file — edit the partial and re-run the script. Active-page highlighting is applied at runtime by `site.js`, so the navbar HTML is identical on every page.
+- Shared styles live in `site.css`, shared behavior in `site.js` — every page links both (`<link rel="stylesheet" href="site.css">` in head after the fonts link, `<script src="site.js" defer></script>` before `</body>`)
+- Page-specific styles go in a small inline `<style>` block AFTER the site.css link (page rules win the cascade); page-specific JS (form handlers, filters) stays inline
+- **Never add the Tailwind CDN** — this template does not use Tailwind; all styling is custom classes + inline styles
 - Placeholder images: `https://placehold.co/WIDTHxHEIGHT`
+- Images: navbar/footer logo loads eager; first content image gets `fetchpriority="high"`; every other image gets `loading="lazy" decoding="async"` plus explicit `width`/`height`
+- Elfsight reviews: only place the `<div class="elfsight-app-...">` container — `site.js` lazy-loads `platform.js` when it nears the viewport; never paste the platform.js script tag
 - Mobile-first responsive
 
 ## Brand Assets
@@ -60,7 +64,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | Mono / Labels | JetBrains Mono | weight 300–700, `letter-spacing: .1–.2em`, uppercase |
 | Body | Inter | `font-size: .9rem`, `line-height: 1.7`, `color: rgba(250,250,247,.65)` |
 
-- Load all four via Google Fonts (see `brand-guidelines.html` `<head>` for the exact import URL).
+- Load all four via Google Fonts with only the used variants: `family=Bebas+Neue&family=Rajdhani:wght@700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=swap` (no italics, no 300/600 weights — they are unused).
 - Fire gradient text: `background: var(--fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`
 - Signal accent text: `color: var(--signal);`
 
